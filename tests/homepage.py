@@ -18,10 +18,13 @@ with sync_playwright() as p:
     page.on('pageerror', lambda error: errors.append(str(error)))
     page.on('request', lambda request: external_requests.append(request.url) if not request.url.startswith(args.url.rstrip('/') + '/') else None)
     page.goto(args.url)
-    for width in [320, 375, 390, 430, 768, 1024, 1440, 1920]:
+    for width in [320, 375, 390, 430, 768, 1024, 1440, 1920, 2560]:
         page.set_viewport_size({'width': width, 'height': 900})
         page.wait_for_timeout(50)
         assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), width
+        container = page.locator('.page').bounding_box()
+        assert abs(container['width'] - min(width, 1920)) < 1, (width, container)
+        assert abs(container['x'] - max(0, (width - 1920) / 2)) < 1, (width, container)
         positions = page.locator('.products img').evaluate_all('(imgs)=>imgs.map(i=>({w:i.getBoundingClientRect().width,h:i.getBoundingClientRect().height,x:i.getBoundingClientRect().x,y:i.getBoundingClientRect().y}))')
         assert len(positions) == 8
         assert all(i['w'] == 118 and i['h'] == 118 for i in positions)
@@ -35,7 +38,7 @@ with sync_playwright() as p:
             assert abs(page.locator('.catalog').bounding_box()['x'] + page.locator('.catalog').bounding_box()['width'] - page.locator('.layout').bounding_box()['x'] - page.locator('.layout').bounding_box()['width']) < 1
         if not args.layout_only:
             assert page.locator('.products img').evaluate_all('(imgs)=>imgs.every(i=>i.complete && i.naturalWidth>0)'), 'Photos must be local and loaded'
-            if width in [320, 390, 430, 1440, 1920]:
+            if width in [320, 390, 430, 1440, 1920, 2560]:
                 Path('docs/screenshots').mkdir(parents=True, exist_ok=True)
                 page.screenshot(path=f'docs/screenshots/homepage-{width}.png', full_page=True)
         # Long translated names must wrap rather than clip or widen a column.
@@ -52,7 +55,7 @@ with sync_playwright() as p:
     assert len(set(expanded)) == math.floor((page.locator('.products').bounding_box()['width'] + 12) / 130)
     assert len(set(expanded)) > 8
     page.locator('.products').evaluate('(grid)=>{while(grid.children.length>8)grid.lastElementChild.remove();}')
-    print('PASS additional demo cards expand beyond eight columns at 1920px')
+    print('PASS additional demo cards use available width inside centered 1920px container at 2560px')
     page.set_viewport_size({'width': 390, 'height': 900})
     page.get_by_role('button', name='Фильтры', exact=True).click()
     assert page.locator('#filters').is_visible()
