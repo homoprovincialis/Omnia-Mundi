@@ -11,6 +11,25 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--url', default='http://127.0.0.1:3010')
 parser.add_argument('--layout-only', action='store_true', help='Skip photo readiness and final screenshots while source access is blocked')
 args = parser.parse_args()
+
+def assert_product_alignment(page):
+    products = page.locator('.products article').evaluate_all("""(articles)=>articles.map(article=>{
+        const title=article.querySelector('h2');
+        const image=article.querySelector('img').getBoundingClientRect();
+        const box=title.getBoundingClientRect();
+        const range=document.createRange(); range.selectNodeContents(title);
+        return {name:title.textContent, align:getComputedStyle(title).textAlign,
+            imageCenter:image.x+image.width/2, titleCenter:box.x+box.width/2,
+            lines:[...range.getClientRects()].map(line=>line.x+line.width/2),
+            amounts:[...article.querySelectorAll('.price,.country')].map(n=>({align:getComputedStyle(n).textAlign,x:n.getBoundingClientRect().x})),
+            imageLeft:image.x};
+    })""")
+    for product in products:
+        assert product['align'] == 'center', product
+        assert abs(product['titleCenter'] - product['imageCenter']) < 1, product
+        assert product['lines'] and all(abs(center - product['imageCenter']) < 1 for center in product['lines']), product
+        assert all(n['align'] in ['left', 'start'] and abs(n['x'] - product['imageLeft']) < 1 for n in product['amounts']), product
+
 with sync_playwright() as p:
     browser = p.chromium.launch(executable_path='/usr/bin/chromium', headless=True, args=['--no-sandbox'])
     page = browser.new_page(viewport={'width': 1440, 'height': 900})
@@ -28,6 +47,9 @@ with sync_playwright() as p:
         positions = page.locator('.products img').evaluate_all('(imgs)=>imgs.map(i=>({w:i.getBoundingClientRect().width,h:i.getBoundingClientRect().height,x:i.getBoundingClientRect().x,y:i.getBoundingClientRect().y}))')
         assert len(positions) == 8
         assert all(i['w'] == 118 and i['h'] == 118 for i in positions)
+        assert_product_alignment(page)
+        assert page.locator('.products h2').filter(has_text='Часы').count() == 1
+        assert page.locator('.products h2').filter(has_text='Настольная лампа').evaluate('(n)=>{const r=document.createRange();r.selectNodeContents(n);return r.getClientRects().length>1;}')
         available = page.locator('.products').bounding_box()['width']
         columns = min(8, math.floor((available + 12) / 130))
         assert len({i['x'] for i in positions}) == columns, (width, available, columns)
@@ -83,8 +105,9 @@ with sync_playwright() as p:
         title.evaluate('(title)=>title.textContent="Очень длинное название демонстрационного товара / Long translated product name ".repeat(3)')
         assert title.evaluate('(title)=>title.scrollWidth<=title.clientWidth && title.scrollHeight<=title.clientHeight')
         assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), width
+        assert_product_alignment(page)
         title.evaluate('(title,text)=>title.textContent=text', original)
-        print(f'PASS {width}px: {columns} columns, 16/15/22px fonts, no clipped text/overlap, expanded filters/credits, keyboard dialog')
+        print(f'PASS {width}px: {columns} columns, centered title lines, left-aligned prices/countries, fonts, overflow and keyboard')
     # More products must use more columns when space permits, without a hidden 8-column cap.
     page.locator('.products').evaluate('(grid)=>{for(let i=0;i<12;i++)grid.append(grid.firstElementChild.cloneNode(true));}')
     expanded = page.locator('.products img').evaluate_all('(imgs)=>imgs.map(i=>i.getBoundingClientRect().x)')
