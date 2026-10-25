@@ -14,20 +14,22 @@ args = parser.parse_args()
 
 def assert_product_alignment(page):
     products = page.locator('.products article').evaluate_all("""(articles)=>articles.map(article=>{
-        const title=article.querySelector('h2');
         const image=article.querySelector('img').getBoundingClientRect();
-        const box=title.getBoundingClientRect();
-        const range=document.createRange(); range.selectNodeContents(title);
-        return {name:title.textContent, align:getComputedStyle(title).textAlign,
-            imageCenter:image.x+image.width/2, titleCenter:box.x+box.width/2,
-            lines:[...range.getClientRects()].map(line=>line.x+line.width/2),
-            amounts:[...article.querySelectorAll('.price,.country')].map(n=>({align:getComputedStyle(n).textAlign,x:n.getBoundingClientRect().x,width:n.getBoundingClientRect().width}))};
+        return {imageCenter:image.x+image.width/2,
+            texts:[...article.querySelectorAll('h2,.price,.country')].map(node=>{
+                const box=node.getBoundingClientRect();
+                const range=document.createRange(); range.selectNodeContents(node);
+                return {text:node.textContent, align:getComputedStyle(node).textAlign,
+                    center:box.x+box.width/2,
+                    lines:[...range.getClientRects()].map(line=>line.x+line.width/2)};
+            })};
     })""")
     for product in products:
-        assert product['align'] == 'center', product
-        assert abs(product['titleCenter'] - product['imageCenter']) < 1, product
-        assert product['lines'] and all(abs(center - product['imageCenter']) < 1 for center in product['lines']), product
-        assert all(n['align'] == 'center' and abs(n['x'] + n['width']/2 - product['imageCenter']) < 1 for n in product['amounts']), product
+        assert len(product['texts']) == 3, product
+        for text in product['texts']:
+            assert text['align'] == 'center', text
+            assert abs(text['center'] - product['imageCenter']) < 1, text
+            assert text['lines'] and all(abs(center - product['imageCenter']) < 1 for center in text['lines']), text
 
 with sync_playwright() as p:
     browser = p.chromium.launch(executable_path='/usr/bin/chromium', headless=True, args=['--no-sandbox'])
