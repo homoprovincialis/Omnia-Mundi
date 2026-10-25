@@ -1,0 +1,4 @@
+# Local data retained from the rejected prototype; never used by this page.
+/data/
+__pycache__/
+.venv/
