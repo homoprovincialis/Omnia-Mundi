@@ -66,3 +66,25 @@ document.querySelector('.search').addEventListener('submit', event => event.prev
 query.addEventListener('input', render);
 syncFilters();
 render();
+
+// Real attribution is distinct from unfinished commercial navigation.
+const sources = document.createElement('details');
+sources.className = 'image-sources';
+const summary = document.createElement('summary');
+summary.textContent = copy.sourcesTitle;
+const explanation = document.createElement('p');
+explanation.textContent = copy.sourcesCredit;
+const credits = document.createElement('ul');
+for (const credit of copy.assetCredits) {
+  const item = document.createElement('li');
+  const source = document.createElement('a');
+  source.href = credit.source;
+  source.textContent = credit.title;
+  const license = document.createElement('a');
+  license.href = credit.licenseUrl;
+  license.textContent = credit.license;
+  item.append(`${credit.label}: ${credit.author}. `, source, ' — ', license, `. ${credit.changes}`);
+  credits.append(item);
+}
+sources.append(summary, explanation, credits);
+document.querySelector('footer').append(sources);

@@ -1,6 +1,9 @@
 """Real Chromium checks. Run against a local static server; never deploys."""
 import argparse
 from pathlib import Path
+import hashlib
+import json
+import subprocess
 from playwright.sync_api import sync_playwright
 
 parser = argparse.ArgumentParser()
@@ -10,15 +13,19 @@ args = parser.parse_args()
 with sync_playwright() as p:
     browser = p.chromium.launch(executable_path='/usr/bin/chromium', headless=True, args=['--no-sandbox'])
     page = browser.new_page(viewport={'width': 1440, 'height': 900})
+    errors, external_requests = [], []
+    page.on('pageerror', lambda error: errors.append(str(error)))
+    page.on('request', lambda request: external_requests.append(request.url) if not request.url.startswith(args.url.rstrip('/') + '/') else None)
     page.goto(args.url)
     for width in [320, 375, 390, 768, 1024, 1440]:
         page.set_viewport_size({'width': width, 'height': 900})
         page.wait_for_timeout(50)
         assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), width
-        positions = page.locator('.products img').evaluate_all('(imgs)=>imgs.map(i=>({w:i.width,h:i.height,x:i.getBoundingClientRect().x,y:i.getBoundingClientRect().y}))')
+        positions = page.locator('.products img').evaluate_all('(imgs)=>imgs.map(i=>({w:i.getBoundingClientRect().width,h:i.getBoundingClientRect().height,x:i.getBoundingClientRect().x,y:i.getBoundingClientRect().y}))')
         assert len(positions) == 8
         assert all(i['w'] == 118 and i['h'] == 118 for i in positions)
         assert len({i['x'] for i in positions}) == (2 if width < 640 else 4)
+        assert len({i['y'] for i in positions}) == (4 if width < 640 else 2)
         if not args.layout_only:
             assert page.locator('.products img').evaluate_all('(imgs)=>imgs.every(i=>i.complete && i.naturalWidth>0)'), 'Photos must be local and loaded'
             if width in [390, 1440]:
@@ -54,4 +61,31 @@ with sync_playwright() as p:
     page.get_by_role('link', name='Каталог', exact=True).click()
     assert page.url.endswith('#catalog')
     print('PASS search, combined categories, empty state, responsive filters, future controls, focus and keyboard')
+    page.get_by_text('Источники изображений', exact=True).click()
+    credits = page.locator('.image-sources li')
+    assert credits.count() == 8
+    manifest = json.loads(Path('assets/products/sources.json').read_text())
+    for credit in manifest:
+        image_path = Path(credit['file'])
+        assert hashlib.sha256(image_path.read_bytes()).hexdigest() == credit['sha256']
+        item = credits.filter(has_text=credit['title'])
+        assert item.count() == 1 and item.is_visible()
+        assert credit['author'] in item.inner_text()
+        assert credit['changes'] in item.inner_text()
+        assert item.locator('a').nth(0).get_attribute('href') == credit['source']
+        assert item.locator('a').nth(1).get_attribute('href') == credit['licenseUrl']
+        assert credit['license'] in item.inner_text()
+    page.set_viewport_size({'width': 390, 'height': 900})
+    assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
+    page.locator('.image-sources summary').focus()
+    page.keyboard.press('Space')
+    assert not page.locator('.image-sources').evaluate('(d)=>d.open')
+    wallet = next(c for c in manifest if c['id'] == 'wallet')
+    assert wallet['author'] == 'Pixloom' and wallet['license'] == 'CC BY-SA 4.0'
+    assert not errors, errors
+    assert not external_requests, external_requests
+    # Immutable owner-provided inputs must match the base branch byte for byte.
+    for name in ['assets/omnia-mundi-logo.svg', 'Omnia-Mundi_Website_Technical_Specification_RU.txt', 'Omnia-Mundi_Codex_Homepage_Phase_1_RU.txt']:
+        assert Path(name).read_bytes() == subprocess.check_output(['git', 'show', f'origin/main:{name}'])
+    print('PASS eight attributed local assets, hashes, wallet ShareAlike notice, no external requests or JS errors, unchanged logo and TXT')
     browser.close()
