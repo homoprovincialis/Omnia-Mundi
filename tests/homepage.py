@@ -21,14 +21,13 @@ def assert_product_alignment(page):
         return {name:title.textContent, align:getComputedStyle(title).textAlign,
             imageCenter:image.x+image.width/2, titleCenter:box.x+box.width/2,
             lines:[...range.getClientRects()].map(line=>line.x+line.width/2),
-            amounts:[...article.querySelectorAll('.price,.country')].map(n=>({align:getComputedStyle(n).textAlign,x:n.getBoundingClientRect().x})),
-            imageLeft:image.x};
+            amounts:[...article.querySelectorAll('.price,.country')].map(n=>({align:getComputedStyle(n).textAlign,x:n.getBoundingClientRect().x,width:n.getBoundingClientRect().width}))};
     })""")
     for product in products:
         assert product['align'] == 'center', product
         assert abs(product['titleCenter'] - product['imageCenter']) < 1, product
         assert product['lines'] and all(abs(center - product['imageCenter']) < 1 for center in product['lines']), product
-        assert all(n['align'] in ['left', 'start'] and abs(n['x'] - product['imageLeft']) < 1 for n in product['amounts']), product
+        assert all(n['align'] == 'center' and abs(n['x'] + n['width']/2 - product['imageCenter']) < 1 for n in product['amounts']), product
 
 with sync_playwright() as p:
     browser = p.chromium.launch(executable_path='/usr/bin/chromium', headless=True, args=['--no-sandbox'])
@@ -46,15 +45,14 @@ with sync_playwright() as p:
         assert abs(container['x'] - max(0, (width - 1920) / 2)) < 1, (width, container)
         positions = page.locator('.products img').evaluate_all('(imgs)=>imgs.map(i=>({w:i.getBoundingClientRect().width,h:i.getBoundingClientRect().height,x:i.getBoundingClientRect().x,y:i.getBoundingClientRect().y}))')
         assert len(positions) == 8
-        assert all(i['w'] == 118 and i['h'] == 118 for i in positions)
+        assert all(i['w'] == 157 and i['h'] == 157 for i in positions)
         assert_product_alignment(page)
         assert page.locator('.products h2').filter(has_text='Часы').count() == 1
-        assert page.locator('.products h2').filter(has_text='Настольная лампа').evaluate('(n)=>{const r=document.createRange();r.selectNodeContents(n);return r.getClientRects().length>1;}')
         available = page.locator('.products').bounding_box()['width']
-        columns = min(8, math.floor((available + 12) / 130))
+        columns = min(8, math.floor((available + 12) / 169))
         assert len({i['x'] for i in positions}) == columns, (width, available, columns)
         assert len({i['y'] for i in positions}) == math.ceil(8 / columns)
-        if width >= 1440:
+        if width >= 1920:
             assert columns == 8
         if width >= 640:
             assert abs(page.locator('.catalog').bounding_box()['x'] + page.locator('.catalog').bounding_box()['width'] - page.locator('.layout').bounding_box()['x'] - page.locator('.layout').bounding_box()['width']) < 1
@@ -107,11 +105,11 @@ with sync_playwright() as p:
         assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), width
         assert_product_alignment(page)
         title.evaluate('(title,text)=>title.textContent=text', original)
-        print(f'PASS {width}px: {columns} columns, centered title lines, left-aligned prices/countries, fonts, overflow and keyboard')
+        print(f'PASS {width}px: {columns} columns, all product text centered, 157px photos, fonts, overflow and keyboard')
     # More products must use more columns when space permits, without a hidden 8-column cap.
     page.locator('.products').evaluate('(grid)=>{for(let i=0;i<12;i++)grid.append(grid.firstElementChild.cloneNode(true));}')
     expanded = page.locator('.products img').evaluate_all('(imgs)=>imgs.map(i=>i.getBoundingClientRect().x)')
-    assert len(set(expanded)) == math.floor((page.locator('.products').bounding_box()['width'] + 12) / 130)
+    assert len(set(expanded)) == math.floor((page.locator('.products').bounding_box()['width'] + 12) / 169)
     assert len(set(expanded)) > 8
     page.locator('.products').evaluate('(grid)=>{while(grid.children.length>8)grid.lastElementChild.remove();}')
     print('PASS additional demo cards use available width inside centered 1920px container at 2560px')
