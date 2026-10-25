@@ -3,7 +3,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { randomBytes, scryptSync, timingSafeEqual, createHash } from 'node:crypto';
 import { mkdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { tradeProfit, businessProfit, freeReward } from './finance.js';
+import { tradeProfit, businessProfit, freeReward, sourceTypes } from './finance.js';
 const root=fileURLToPath(new URL('../',import.meta.url));
 mkdirSync(process.env.DATA_DIR||root+'data',{recursive:true});
 const db=new DatabaseSync((process.env.DATA_DIR||root+'data')+'/omnia.sqlite');
@@ -91,7 +91,7 @@ const server=http.createServer(async(req,res)=>{
  }
  if(req.method==='POST'&&url.pathname==='/api/finance/preview'){
   if(!Number.isSafeInteger(body.cents)||body.cents<0||body.cents>100000000)fail(400,'Amount must be integer cents');
-  let result;if(body.kind==='trade')result=tradeProfit(body.cents);else if(body.kind==='business')result=businessProfit(body.cents);else if(body.kind==='free'&&Number.isInteger(body.participants)&&body.participants>=1&&body.participants<=100)result=freeReward(body.cents,body.participants);else fail(400,'Invalid calculation');return json(200,{mode:'preview',currency:'EUR',result});
+  let result;if(body.kind==='trade'){if(!sourceTypes.includes(body.sourceType))fail(400,'A single valid sourceType is required');result=tradeProfit(body.cents,body.sourceType);}else if(body.kind==='business')result=businessProfit(body.cents);else if(body.kind==='free'&&Number.isInteger(body.participants)&&body.participants>=1&&body.participants<=100)result=freeReward(body.cents,body.participants);else fail(400,'Invalid calculation');return json(200,{mode:'preview',currency:'EUR',result});
  }
  fail(404,'Not found');
  }catch(e){json(e.status||500,{error:e.status?e.message:'Internal server error'});if(!e.status)console.error(e.code||e.name);}

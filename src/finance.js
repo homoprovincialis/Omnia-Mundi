@@ -7,9 +7,13 @@ export function allocate(cents, weights) {
   for(let n=cents-parts.reduce((a,b)=>a+b,0),i=0;i<n;i++) parts[order[i].i]++;
   return parts;
 }
-export function tradeProfit(netCents) {
-  const [procurer,manufacturer,seller,receiver,moderator] = allocate(netCents,[20,20,20,20,20]);
-  return {procurer,manufacturer,seller,receiver,moderator,moderatorInternal:allocate(moderator,[5,5,10])};
+export const sourceTypes = Object.freeze(['Procurer', 'Manufacturer', 'Seller']);
+export function tradeProfit(netCents, sourceType) {
+  if (!sourceTypes.includes(sourceType)) throw new Error('A single valid sourceType is required');
+  // Allocate the five primary shares first; internal amounts must sum to Moderator's share.
+  const [source, receiver, moderator, omniaMundi, protectionFund] = allocate(netCents, [20,20,20,20,20]);
+  return {sourceType, source, receiver, moderator, omniaMundi, protectionFund,
+    moderatorInternal: allocate(moderator, [5,5,10])};
 }
 export const businessProfit = cents => allocate(cents,[35,35,30]);
 export function freeReward(cents, participantCount) {
