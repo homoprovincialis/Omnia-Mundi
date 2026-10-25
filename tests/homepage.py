@@ -18,7 +18,7 @@ with sync_playwright() as p:
     page.on('pageerror', lambda error: errors.append(str(error)))
     page.on('request', lambda request: external_requests.append(request.url) if not request.url.startswith(args.url.rstrip('/') + '/') else None)
     page.goto(args.url)
-    for width in [320, 375, 390, 768, 1024, 1440, 1920]:
+    for width in [320, 375, 390, 430, 768, 1024, 1440, 1920]:
         page.set_viewport_size({'width': width, 'height': 900})
         page.wait_for_timeout(50)
         assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), width
@@ -26,7 +26,7 @@ with sync_playwright() as p:
         assert len(positions) == 8
         assert all(i['w'] == 118 and i['h'] == 118 for i in positions)
         available = page.locator('.products').bounding_box()['width']
-        columns = min(8, 2 if width < 640 else math.floor((available + 12) / 130))
+        columns = min(8, math.floor((available + 12) / 130))
         assert len({i['x'] for i in positions}) == columns, (width, available, columns)
         assert len({i['y'] for i in positions}) == math.ceil(8 / columns)
         if width >= 1440:
@@ -35,10 +35,17 @@ with sync_playwright() as p:
             assert abs(page.locator('.catalog').bounding_box()['x'] + page.locator('.catalog').bounding_box()['width'] - page.locator('.layout').bounding_box()['x'] - page.locator('.layout').bounding_box()['width']) < 1
         if not args.layout_only:
             assert page.locator('.products img').evaluate_all('(imgs)=>imgs.every(i=>i.complete && i.naturalWidth>0)'), 'Photos must be local and loaded'
-            if width in [390, 1440, 1920]:
+            if width in [320, 390, 430, 1440, 1920]:
                 Path('docs/screenshots').mkdir(parents=True, exist_ok=True)
                 page.screenshot(path=f'docs/screenshots/homepage-{width}.png', full_page=True)
-        print(f'PASS layout {width}px: {columns} columns')
+        # Long translated names must wrap rather than clip or widen a column.
+        title = page.locator('.products h2').first
+        original = title.inner_text()
+        title.evaluate('(title)=>title.textContent="Очень длинное название демонстрационного товара / Long translated product name ".repeat(3)')
+        assert title.evaluate('(title)=>title.scrollWidth<=title.clientWidth && title.scrollHeight<=title.clientHeight')
+        assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'), width
+        title.evaluate('(title,text)=>title.textContent=text', original)
+        print(f'PASS layout {width}px: {columns} columns, long labels wrap')
     # More products must use more columns when space permits, without a hidden 8-column cap.
     page.locator('.products').evaluate('(grid)=>{for(let i=0;i<12;i++)grid.append(grid.firstElementChild.cloneNode(true));}')
     expanded = page.locator('.products img').evaluate_all('(imgs)=>imgs.map(i=>i.getBoundingClientRect().x)')
