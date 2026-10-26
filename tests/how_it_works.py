@@ -1,6 +1,5 @@
 """HTTP/browser acceptance checks for the single informational page in Issue #6."""
 import argparse
-from decimal import Decimal
 from pathlib import Path
 from playwright.sync_api import sync_playwright, expect
 
@@ -39,20 +38,20 @@ with sync_playwright() as p:
     assert all(name in chains[1] for name in ['Manufacturer','Store Receiver','Customer','POS'])
     assert page.locator('.purchase-steps li').count() == 6
 
-    # Validate the visible example, not merely data-* fields or a hidden total.
-    expected = [('Один источник: Procurer или Manufacturer или Seller',20,200),('Receiver',20,200),('Sender Curator',5,50),('Receiver Curator',5,50),('Order Supervisor',10,100),('Omnia-Mundi',20,200),('Protection Fund',20,200)]
-    shares, amounts = [], []
+    # Verify approved shares without hypothetical money amounts.
     rows = page.locator('.profit-example tbody tr')
-    assert rows.count() == 7
-    for row, (label, share, cents) in zip(rows.all(), expected):
+    expected = [('Один источник: Procurer или Manufacturer или Seller',20),('Receiver',20),('Sender Curator',5),('Receiver Curator',5),('Order Supervisor',10),('Omnia-Mundi',20),('Protection Fund',20)]
+    assert rows.count() == len(expected)
+    shares = []
+    for row,(label,share) in zip(rows.all(),expected):
         assert row.locator('th').inner_text() == label
-        shown_share = int(row.locator('td').nth(0).inner_text().replace('%',''))
-        shown_cents = int(Decimal(row.locator('td').nth(1).inner_text().replace('€','').strip().replace(',','.')) * 100)
-        assert shown_share == share and shown_cents == cents
-        shares.append(shown_share); amounts.append(shown_cents)
-    assert sum(shares) == 100 and sum(amounts) == 1000
-    assert sum(shares[2:5]) == 20
-    assert page.locator('.profit-example tfoot td').all_text_contents() == ['100%','10,00 €']
+        actual = int(row.locator('td').inner_text().replace('%',''))
+        assert actual == share
+        shares.append(actual)
+    assert sum(shares) == 100 and sum(shares[2:5]) == 20
+    assert page.locator('.profit-example tfoot td').all_text_contents() == ['100%']
+    assert 'может меняться ежедневно' in page.locator('#stores').inner_text()
+    assert 'оплачивает покупатель' in page.locator('#stores').inner_text()
 
     for width in [320,375,390,430,768,1024,1440,1920,2560]:
         page.set_viewport_size({'width':width,'height':900})
@@ -112,5 +111,5 @@ with sync_playwright() as p:
     static.get_by_role('link',name='Вернуться в каталог').click()
     assert static.url == base + '/index.html#catalog'
     nojs.close()
-    print('PASS content, 100% P example, navigation both ways, no external requests/JS errors/404, static reading without JS')
+    print('PASS content, 100% P shares, navigation both ways, no external requests/JS errors/404, static reading without JS')
     browser.close()

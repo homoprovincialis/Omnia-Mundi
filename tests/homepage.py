@@ -1,4 +1,5 @@
 """Real Chromium checks. Run against a local static server; never deploys."""
+from financial_rules import approved_input
 import argparse
 import math
 from pathlib import Path
@@ -177,8 +178,8 @@ with sync_playwright() as p:
     assert wallet['author'] == 'Pixloom' and wallet['license'] == 'CC BY-SA 4.0'
     assert not errors, errors
     assert not external_requests, external_requests
-    # Immutable owner-provided inputs must match the base branch byte for byte.
+    # Inputs stay byte-identical to main or the specifically approved PR #14 revision.
     for name in ['assets/omnia-mundi-logo.svg', 'Omnia-Mundi_Website_Technical_Specification_RU.txt', 'Omnia-Mundi_Codex_Homepage_Phase_1_RU.txt', 'ASSETS.md', 'assets/products/sources.json']:
-        assert Path(name).read_bytes() == subprocess.check_output(['git', 'show', f'origin/main:{name}'])
+        assert Path(name).read_bytes() == approved_input(name)
     print('PASS eight attributed local assets, hashes, wallet ShareAlike notice, no external requests or JS errors, unchanged logo and TXT')
     browser.close()
