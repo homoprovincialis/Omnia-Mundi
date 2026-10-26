@@ -72,7 +72,7 @@
         <p class="trade-chain" aria-label="Магазинная торговая цепочка" data-i18n-aria-label="how.arialabel6"><span>Manufacturer</span><span aria-hidden="true">→</span><span>Store Receiver</span><span aria-hidden="true">→</span><span data-i18n="how.span7">Customer · продажа через POS</span></p>
         <p data-i18n="how.p5">Store Receiver — независимый владелец магазина: он сам оплачивает открытие и работу. Omnia-Mundi предоставляет бренд и организационную инфраструктуру по согласованным условиям, без вступительного взноса и регулярного роялти.</p>
         <p data-i18n-html="how.p6">Manufacturer может передать партию на консигнацию <strong>без предварительного выкупа</strong> магазином. Условия согласуются, а магазин сам решает, принимать ли ассортимент. По согласованной конструкции собственником до продажи остаётся Manufacturer; юридические условия закрепляются договором.</p>
-        <p data-i18n-html="how.p7"><strong>Store Selling Cost (SSC)</strong> возмещает обоснованные расходы магазина на продажу: аренду, персонал, коммунальные услуги, амортизацию и другие допустимые статьи. SSC учитывается до расчёта распределяемой прибыли P и <strong>не является прибылью магазина</strong>. Возмещение SSC и доля прибыли Store Receiver — разные суммы.</p>
+        <p data-i18n-html="how.p7"><strong>Store Selling Cost (SSC)</strong> — часть конечной цены товара при продаже через физический магазин, которую оплачивает покупатель и которая отдельно показывается в структуре цены. SSC рассчитывается индивидуально для каждого магазина с учётом обоснованных расходов, количества товаров и других факторов; он может меняться ежедневно. SSC учитывается до расчёта распределяемой прибыли P и <strong>не является прибылью магазина</strong>. Возмещение SSC и доля прибыли Store Receiver — разные суммы.</p>
         <p data-i18n="how.p8">Специальные депозиты, кассовые требования и сроки перечислений для магазинной консигнации требуют отдельных решений и договоров.</p>
       </section>
 
@@ -82,18 +82,18 @@
         <p data-i18n="how.p10">Manufacturer и Seller сами назначают цену передачи: она может уже включать их коммерческий доход. Это не то же самое, что документированная закупка Procurer.</p>
         <p id="moderator-total" data-i18n="how.p11">Moderator в сумме получает 20% P: 5% Sender Curator, 5% Receiver Curator и 10% Order Supervisor. Это части его общей доли, не дополнительные выплаты поверх 20%.</p>
         <table class="profit-example">
-          <caption data-i18n="how.caption1">Учебный пример: P = 10,00 € — только прибыль, не цена товара</caption>
-          <thead><tr><th scope="col" data-i18n="how.th1">Получатель</th><th scope="col" data-i18n="how.th2">Доля P</th><th scope="col" data-i18n="how.th3">Из P = 10 €</th></tr></thead>
+          <caption data-i18n="how.caption1">Распределение положительной прибыли P</caption>
+          <thead><tr><th scope="col" data-i18n="how.th1">Получатель</th><th scope="col" data-i18n="how.th2">Доля P</th></tr></thead>
           <tbody>
-            <tr data-share="20" data-cents="200"><th scope="row" data-i18n="how.th4">Один источник: Procurer или Manufacturer или Seller</th><td>20%</td><td data-i18n="how.td1">2,00 €</td></tr>
-            <tr data-share="20" data-cents="200"><th scope="row">Receiver</th><td>20%</td><td data-i18n="how.td2">2,00 €</td></tr>
-            <tr data-share="5" data-cents="50"><th scope="row">Sender Curator</th><td>5%</td><td data-i18n="how.td3">0,50 €</td></tr>
-            <tr data-share="5" data-cents="50"><th scope="row">Receiver Curator</th><td>5%</td><td data-i18n="how.td4">0,50 €</td></tr>
-            <tr data-share="10" data-cents="100"><th scope="row">Order Supervisor</th><td>10%</td><td data-i18n="how.td5">1,00 €</td></tr>
-            <tr data-share="20" data-cents="200"><th scope="row">Omnia-Mundi</th><td>20%</td><td data-i18n="how.td6">2,00 €</td></tr>
-            <tr data-share="20" data-cents="200"><th scope="row">Protection Fund</th><td>20%</td><td data-i18n="how.td7">2,00 €</td></tr>
+            <tr><th scope="row" data-i18n="how.th4">Один источник: Procurer или Manufacturer или Seller</th><td>20%</td></tr>
+            <tr><th scope="row">Receiver</th><td>20%</td></tr>
+            <tr><th scope="row">Sender Curator</th><td>5%</td></tr>
+            <tr><th scope="row">Receiver Curator</th><td>5%</td></tr>
+            <tr><th scope="row">Order Supervisor</th><td>10%</td></tr>
+            <tr><th scope="row">Omnia-Mundi</th><td>20%</td></tr>
+            <tr><th scope="row">Protection Fund</th><td>20%</td></tr>
           </tbody>
-          <tfoot><tr><th scope="row" data-i18n="how.th5">Всего</th><td>100%</td><td data-i18n="how.td8">10,00 €</td></tr></tfoot>
+          <tfoot><tr><th scope="row" data-i18n="how.th5">Всего</th><td>100%</td></tr></tfoot>
         </table>
         <p data-i18n-html="how.p12"><strong>Protection Fund — отдельный резерв защиты, не операционный доход Omnia-Mundi.</strong> Его средства учитываются отдельно от дохода компании.</p>
         <p data-i18n="how.p13">Прибыль участников начисляется по правилам завершённых сделок. В стандартной цепочке Procurer после выполнения своей части и подтверждения оплаты клиента получает раннее возмещение документированной закупки и первой отправки, но свои 20% P — только после окончательного закрытия. В обычной сделке Manufacturer/Seller получают согласованную цену передачи, возмещение первой отправки и долю прибыли после успешного окончательного закрытия. Для консигнации сроки определяются отдельно.</p>
