@@ -1,4 +1,5 @@
 """Issue #10: actual RU/EN Earn page, visible financial rules, navigation and screenshots."""
+from financial_rules import approved_input, assert_financial_copy
 import argparse
 import hashlib
 from datetime import datetime, timezone
@@ -31,6 +32,7 @@ def assert_language(page,lang):
 
 
 def assert_content(page,lang):
+    assert_financial_copy(page, lang, "earn.ssc")
     assert page.locator('.earning-role').count()==5
     assert page.locator('.earning-role h2').all_text_contents()==roles
     for role in page.locator('.earning-role').all():
@@ -174,17 +176,17 @@ with sync_playwright() as p:
     page.goto(base+route);assert page.locator('.earning-role h2').all_text_contents()==roles
     assert page.locator('#development-status').is_visible()
     page.locator('#profit a').click();assert page.url==base+'/how-it-works.html#income';context.close()
-    # Existing pages, engine, assets and approved text are unchanged; only Earn footer metadata is added.
+    # Preserve approved PR #14 financial copy; protect all other existing inputs.
     unchanged=['index.html','how-it-works.html','i18n.js','navigation.js','app.js','AGENTS.md','ASSETS.md','assets/omnia-mundi-logo.svg','assets/products/sources.json','Omnia-Mundi_Website_Technical_Specification_RU.txt','Omnia-Mundi_Codex_Homepage_Phase_1_RU.txt','Omnia-Mundi_Development_Roadmap_RU.pdf']
     unchanged += [str(path) for path in Path('assets/products').glob('*.jpg')]
-    for file in unchanged:assert Path(file).read_bytes()==subprocess.check_output(['git','show','origin/main:'+file]),file
+    for file in unchanged:assert Path(file).read_bytes()==approved_input(file),file
     assert Path('style.css').read_text().startswith(subprocess.check_output(['git','show','origin/main:style.css']).decode())
     for lang in ['ru','en']:
         marker='window.OMNIA_MESSAGES.'+lang+' = '
         parse=lambda s:json.loads(s.split(marker,1)[1].strip().rstrip(';'))
-        old=parse(subprocess.check_output(['git','show',f'origin/main:locales/{lang}.js']).decode())
+        old=parse(approved_input(f'locales/{lang}.js').decode())
         new=parse(Path(f'locales/{lang}.js').read_text())
-        assert all(new[key]==value for key,value in old.items()),lang
+        assert new==old,lang
     assert len(captures)==6
     Path('docs/screenshots/earn/captures.json').write_text(json.dumps(captures,ensure_ascii=False,indent=2)+'\n')
     print('PASS three-page language navigation, storage fallback, RU no-JS, 100% shares, unchanged existing pages/engine/assets/translations')

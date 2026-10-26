@@ -1,4 +1,5 @@
 """RU/EN acceptance: both pages, all breakpoints, persistence and unchanged facts."""
+from financial_rules import approved_input, assert_financial_copy
 import argparse
 import hashlib
 import json
@@ -41,6 +42,7 @@ class MainText(HTMLParser):
 
 
 def check_example(page, lang):
+    assert_financial_copy(page, lang, "how.p7")
     rows = page.locator('.profit-example tbody tr')
     assert rows.count() == 7
     shares = []
@@ -91,8 +93,9 @@ with sync_playwright() as p:
                 check_example(page,lang)
                 if lang == 'ru':
                     baseline = MainText()
-                    baseline.feed(subprocess.check_output(['git','show','origin/main:how-it-works.html']).decode())
+                    baseline.feed(approved_input('how-it-works.html').decode())
                     tokenize = lambda text: re.findall(r'\w+|[^\w\s]', text)
+                    assert tokenize(' '.join(baseline.parts)) == tokenize(page.locator('main').inner_text())
                     assert 'Сайт в разработке' in page.locator('main').inner_text() and 'без предварительного выкупа' in page.locator('main').inner_text()
             else:
                 assert page.locator('.products article').count() == 8
@@ -256,6 +259,6 @@ with sync_playwright() as p:
     context.close()
     # Fixed, previously approved material is not edited for translation.
     for file in ['assets/omnia-mundi-logo.svg','ASSETS.md','assets/products/sources.json','Omnia-Mundi_Website_Technical_Specification_RU.txt','Omnia-Mundi_Codex_Homepage_Phase_1_RU.txt','Omnia-Mundi_Development_Roadmap_RU.pdf']:
-        assert Path(file).read_bytes()==subprocess.check_output(['git','show','origin/main:'+file])
+        assert Path(file).read_bytes()==approved_input(file)
     print('PASS URL/storage priority, direct links, new-user RU, invalid language, blocked storage, navigation and immutable facts')
     browser.close()
