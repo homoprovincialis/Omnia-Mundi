@@ -2,7 +2,6 @@
 import argparse
 import hashlib
 from datetime import datetime, timezone
-from decimal import Decimal
 from pathlib import Path
 import json
 import re
@@ -44,16 +43,18 @@ def assert_content(page,lang):
         assert specialization in page.locator('#moderator [data-field=reward]').inner_text()
     rows=page.locator('.profit-example tbody tr')
     assert rows.count()==7
-    percentages=[];amounts=[]
+    shares=[]
     expected_labels=[('One source: Procurer or Manufacturer or Seller' if lang=='en' else 'Один источник: Procurer или Manufacturer или Seller'),'Receiver','Sender Curator','Receiver Curator','Order Supervisor','Omnia-Mundi','Protection Fund']
-    for row,label,percent,cents in zip(rows.all(),expected_labels,[20,20,5,5,10,20,20],[200,200,50,50,100,200,200]):
+    for row,label,share in zip(rows.all(),expected_labels,[20,20,5,5,10,20,20]):
         assert row.locator('th').inner_text()==label
-        actual_percent=int(row.locator('td').nth(0).inner_text().replace('%',''))
-        actual_cents=int(Decimal(row.locator('td').nth(1).inner_text().replace('€','').replace(',','.').strip())*100)
-        assert (actual_percent,actual_cents)==(percent,cents)
-        percentages.append(actual_percent);amounts.append(actual_cents)
-    assert sum(percentages)==100 and sum(amounts)==1000 and sum(percentages[2:5])==20
+        actual=int(row.locator('td').inner_text().replace('%',''))
+        assert actual==share
+        shares.append(actual)
+    assert sum(shares)==100 and sum(shares[2:5])==20
     assert page.locator('.profit-example tfoot td').nth(0).inner_text()=='100%'
+    text=page.locator('#profit').inner_text()
+    assert ('может меняться ежедневно' if lang=='ru' else 'may change daily') in text
+
     phrases={
         'ru':{
             '#procurer [data-field=reward]':['раннее возмещение','только после окончательного закрытия','не прибыль'],
@@ -186,5 +187,5 @@ with sync_playwright() as p:
         assert all(new[key]==value for key,value in old.items()),lang
     assert len(captures)==6
     Path('docs/screenshots/earn/captures.json').write_text(json.dumps(captures,ensure_ascii=False,indent=2)+'\n')
-    print('PASS three-page language navigation, storage fallback, RU no-JS, 100%/1000 cents, unchanged existing pages/engine/assets/translations')
+    print('PASS three-page language navigation, storage fallback, RU no-JS, 100% shares, unchanged existing pages/engine/assets/translations')
     browser.close()
