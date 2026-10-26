@@ -15,7 +15,8 @@ window.OMNIA_DATA = Object.freeze({
       "href": "how-it-works.html"
     },
     {
-      "id": "earn"
+      "id": "earn",
+      "href": "earn-with-omnia-mundi.html"
     },
     {
       "id": "receiver"

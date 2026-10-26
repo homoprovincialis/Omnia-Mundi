@@ -207,7 +207,7 @@ with sync_playwright() as p:
                 page.locator('.catalog-search-link').click()
                 assert parse_qs(urlparse(page.url).query)['lang']==[lang] and urlparse(page.url).fragment=='catalog'
                 ready(page)
-                page.locator('#footer-nav a').click()
+                page.locator('#footer-nav a[href*="how-it-works.html"]').click()
                 assert urlparse(page.url).path=='/how-it-works.html' and parse_qs(urlparse(page.url).query)['lang']==[lang]
             page.reload();ready(page)
             assert page.locator('html').get_attribute('lang')==lang
@@ -253,7 +253,7 @@ with sync_playwright() as p:
         page.locator('[data-language=ru]').click()
         assert page.locator('html').get_attribute('lang')=='ru'
         page.locator('[data-language=en]').click()
-        page.locator('#footer-nav a').click()
+        page.locator('#footer-nav a[href*="how-it-works.html"]').click()
         assert parse_qs(urlparse(page.url).query)['lang']==['en']
     context.close()
     # Fixed, previously approved material is not edited for translation.

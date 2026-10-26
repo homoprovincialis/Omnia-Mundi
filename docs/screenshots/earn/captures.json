@@ -1,0 +1,92 @@
+[
+  {
+    "file": "docs/screenshots/earn/earn-ru-390.png",
+    "url": "http://127.0.0.1:3010/earn-with-omnia-mundi.html?lang=ru&ref=issue10#content",
+    "language": "ru",
+    "viewport": {
+      "width": 390,
+      "height": 900
+    },
+    "deviceScaleFactor": 1,
+    "fullPage": true,
+    "browser": "Chromium 154.0.8037.57",
+    "capturedAtUtc": "2026-10-26T13:05:12.346850+00:00",
+    "sha256": "88f62a974689a861914f48815d8a930cb9744dfef851d360a5bae25b670b0b27",
+    "renderedHtmlSha256": "6ce41b034285eef7ca3578ce6b111d3168965f55fab859e9ff2fc958e7faf484"
+  },
+  {
+    "file": "docs/screenshots/earn/earn-ru-1440.png",
+    "url": "http://127.0.0.1:3010/earn-with-omnia-mundi.html?lang=ru&ref=issue10#content",
+    "language": "ru",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "deviceScaleFactor": 1,
+    "fullPage": true,
+    "browser": "Chromium 154.0.8037.57",
+    "capturedAtUtc": "2026-10-26T13:05:14.521929+00:00",
+    "sha256": "65da8ce7cd1f92b25684fb0e5c7e74e2b0334eaee18c2d2e4963bfb64350a1d5",
+    "renderedHtmlSha256": "6ce41b034285eef7ca3578ce6b111d3168965f55fab859e9ff2fc958e7faf484"
+  },
+  {
+    "file": "docs/screenshots/earn/earn-ru-1920.png",
+    "url": "http://127.0.0.1:3010/earn-with-omnia-mundi.html?lang=ru&ref=issue10#content",
+    "language": "ru",
+    "viewport": {
+      "width": 1920,
+      "height": 900
+    },
+    "deviceScaleFactor": 1,
+    "fullPage": true,
+    "browser": "Chromium 154.0.8037.57",
+    "capturedAtUtc": "2026-10-26T13:05:15.337566+00:00",
+    "sha256": "c1d53e6788063515ac1adff7e710f877991891f80f121842d924f277150b744d",
+    "renderedHtmlSha256": "6ce41b034285eef7ca3578ce6b111d3168965f55fab859e9ff2fc958e7faf484"
+  },
+  {
+    "file": "docs/screenshots/earn/earn-en-390.png",
+    "url": "http://127.0.0.1:3010/earn-with-omnia-mundi.html?lang=en&ref=issue10#content",
+    "language": "en",
+    "viewport": {
+      "width": 390,
+      "height": 900
+    },
+    "deviceScaleFactor": 1,
+    "fullPage": true,
+    "browser": "Chromium 154.0.8037.57",
+    "capturedAtUtc": "2026-10-26T13:05:19.915209+00:00",
+    "sha256": "3d4342d9c9aa01d3db470dddc848727f7b24f7a1efeb7ae0d08aa914207a3edc",
+    "renderedHtmlSha256": "37babc725412e13ac87b5ddcba2382957c764cb273297ce1831e0ae6e6c9dcf3"
+  },
+  {
+    "file": "docs/screenshots/earn/earn-en-1440.png",
+    "url": "http://127.0.0.1:3010/earn-with-omnia-mundi.html?lang=en&ref=issue10#content",
+    "language": "en",
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
+    "deviceScaleFactor": 1,
+    "fullPage": true,
+    "browser": "Chromium 154.0.8037.57",
+    "capturedAtUtc": "2026-10-26T13:05:22.136992+00:00",
+    "sha256": "5ed8b64de8c791dfbdae92cc664989d67501ae7628950091c0928849d4fe3fd5",
+    "renderedHtmlSha256": "37babc725412e13ac87b5ddcba2382957c764cb273297ce1831e0ae6e6c9dcf3"
+  },
+  {
+    "file": "docs/screenshots/earn/earn-en-1920.png",
+    "url": "http://127.0.0.1:3010/earn-with-omnia-mundi.html?lang=en&ref=issue10#content",
+    "language": "en",
+    "viewport": {
+      "width": 1920,
+      "height": 900
+    },
+    "deviceScaleFactor": 1,
+    "fullPage": true,
+    "browser": "Chromium 154.0.8037.57",
+    "capturedAtUtc": "2026-10-26T13:05:22.973466+00:00",
+    "sha256": "7d586a7e20a70c867e5f343b2d3848926b6b0cb5211bedb6228cc7153d207fd1",
+    "renderedHtmlSha256": "37babc725412e13ac87b5ddcba2382957c764cb273297ce1831e0ae6e6c9dcf3"
+  }
+]

@@ -1,0 +1,10 @@
+PASS How It Works 320px: readable content/table, shared shell, keyboard, placeholders
+PASS How It Works 375px: readable content/table, shared shell, keyboard, placeholders
+PASS How It Works 390px: readable content/table, shared shell, keyboard, placeholders
+PASS How It Works 430px: readable content/table, shared shell, keyboard, placeholders
+PASS How It Works 768px: readable content/table, shared shell, keyboard, placeholders
+PASS How It Works 1024px: readable content/table, shared shell, keyboard, placeholders
+PASS How It Works 1440px: readable content/table, shared shell, keyboard, placeholders
+PASS How It Works 1920px: readable content/table, shared shell, keyboard, placeholders
+PASS How It Works 2560px: readable content/table, shared shell, keyboard, placeholders
+PASS content, 100% P example, navigation both ways, no external requests/JS errors/404, static reading without JS

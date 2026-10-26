@@ -1,0 +1,19 @@
+PASS Earn ru 320px: 5 roles, visible financial rules, typography, no clipping, keyboard and language
+PASS Earn ru 375px: 5 roles, visible financial rules, typography, no clipping, keyboard and language
+PASS Earn ru 390px: 5 roles, visible financial rules, typography, no clipping, keyboard and language
+PASS Earn ru 430px: 5 roles, visible financial rules, typography, no clipping, keyboard and language
+PASS Earn ru 768px: 5 roles, visible financial rules, typography, no clipping, keyboard and language
+PASS Earn ru 1024px: 5 roles, visible financial rules, typography, no clipping, keyboard and language
+PASS Earn ru 1440px: 5 roles, visible financial rules, typography, no clipping, keyboard and language
+PASS Earn ru 1920px: 5 roles, visible financial rules, typography, no clipping, keyboard and language
+PASS Earn ru 2560px: 5 roles, visible financial rules, typography, no clipping, keyboard and language
+PASS Earn en 320px: 5 roles, visible financial rules, typography, no clipping, keyboard and language
+PASS Earn en 375px: 5 roles, visible financial rules, typography, no clipping, keyboard and language
+PASS Earn en 390px: 5 roles, visible financial rules, typography, no clipping, keyboard and language
+PASS Earn en 430px: 5 roles, visible financial rules, typography, no clipping, keyboard and language
+PASS Earn en 768px: 5 roles, visible financial rules, typography, no clipping, keyboard and language
+PASS Earn en 1024px: 5 roles, visible financial rules, typography, no clipping, keyboard and language
+PASS Earn en 1440px: 5 roles, visible financial rules, typography, no clipping, keyboard and language
+PASS Earn en 1920px: 5 roles, visible financial rules, typography, no clipping, keyboard and language
+PASS Earn en 2560px: 5 roles, visible financial rules, typography, no clipping, keyboard and language
+PASS three-page language navigation, storage fallback, RU no-JS, 100%/1000 cents, unchanged existing pages/engine/assets/translations

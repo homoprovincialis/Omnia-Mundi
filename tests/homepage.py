@@ -146,8 +146,8 @@ with sync_playwright() as p:
     assert page.url.endswith('#catalog')
     footer_link = page.locator('#footer-nav').get_by_role('link', name='Как это работает', exact=True)
     assert footer_link.get_attribute('href') == '/how-it-works.html?lang=ru'
-    assert page.locator('#footer-nav button').count() == 15
-    assert page.locator('#footer-nav a').count() == 1
+    assert page.locator('#footer-nav button').count() == 14
+    assert page.locator('#footer-nav a').count() == 2
     footer_link.click()
     assert page.url.endswith('/how-it-works.html?lang=ru')
     page.get_by_role('link', name='Каталог', exact=True).click()

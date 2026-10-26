@@ -1,0 +1,136 @@
+{
+  "baseCommit": "fa1bc9ff3cfa2ecbaab92976cb8f777fdbd9ac4e",
+  "sourceSha256": {
+    "earn-with-omnia-mundi.html": "6a8fa9d1552c349d41aac5bd2aa232a0070de2fd9a53ee92c5ae23d38430717e",
+    "index.html": "53b04795688c8d0c6412b6beb9601283bf73c5ba51caa77270e6bbee3fc369e4",
+    "how-it-works.html": "e8c55f36dcd5c90f09a5c1e20547c463b388267261d2a7c0b3fb0098380ef395",
+    "style.css": "a9189d48c6da750f42933d7b4ad857615308a629c1eb6c9a0559dcebf5d0cba0",
+    "site-data.js": "2fea673557c0a14cb19b80d786fa320ce1210d5278b54140bee36b81a0b2f9c1",
+    "locales/ru.js": "94423e979ef8e0d182fbd213b74acdc77272cae95d762f1efbb2265f50bb9cf5",
+    "locales/en.js": "9259769e51979daf6b9ab14a04eb479b10a91dfef544c31a0afd85051336cb6a",
+    "i18n.js": "96fd3fa3979c0c055fe771cf023ed0297564d353d4217c36917072e1250258bc",
+    "navigation.js": "653cd00812a4672ec8f5844a254e0d271325c0e99c79e82d41e5318466efab42",
+    "app.js": "0e139c0fe44c534cc29ecd0dac84c48ead3ecd5cb306c76ac912264546d5247f"
+  },
+  "runs": [
+    {
+      "command": [
+        "python3",
+        "tests/homepage.py"
+      ],
+      "startedAtUtc": "2026-10-26T13:04:32.211554+00:00",
+      "completedAtUtc": "2026-10-26T13:04:38.060159+00:00",
+      "exitCode": 0,
+      "outputFile": "docs/test-results/issue-10/01-python3-tests-homepage.py.txt"
+    },
+    {
+      "command": [
+        "python3",
+        "tests/how_it_works.py"
+      ],
+      "startedAtUtc": "2026-10-26T13:04:38.060222+00:00",
+      "completedAtUtc": "2026-10-26T13:04:46.805307+00:00",
+      "exitCode": 0,
+      "outputFile": "docs/test-results/issue-10/02-python3-tests-how_it_works.py.txt"
+    },
+    {
+      "command": [
+        "python3",
+        "tests/i18n.py"
+      ],
+      "startedAtUtc": "2026-10-26T13:04:46.805540+00:00",
+      "completedAtUtc": "2026-10-26T13:05:09.068693+00:00",
+      "exitCode": 0,
+      "outputFile": "docs/test-results/issue-10/03-python3-tests-i18n.py.txt"
+    },
+    {
+      "command": [
+        "python3",
+        "tests/earn.py"
+      ],
+      "startedAtUtc": "2026-10-26T13:05:09.068752+00:00",
+      "completedAtUtc": "2026-10-26T13:05:27.531732+00:00",
+      "exitCode": 0,
+      "outputFile": "docs/test-results/issue-10/04-python3-tests-earn.py.txt"
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "app.js"
+      ],
+      "startedAtUtc": "2026-10-26T13:05:27.531786+00:00",
+      "completedAtUtc": "2026-10-26T13:05:27.561744+00:00",
+      "exitCode": 0,
+      "outputFile": "docs/test-results/issue-10/05-node---check.txt"
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "navigation.js"
+      ],
+      "startedAtUtc": "2026-10-26T13:05:27.561796+00:00",
+      "completedAtUtc": "2026-10-26T13:05:27.593511+00:00",
+      "exitCode": 0,
+      "outputFile": "docs/test-results/issue-10/06-node---check.txt"
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "i18n.js"
+      ],
+      "startedAtUtc": "2026-10-26T13:05:27.593566+00:00",
+      "completedAtUtc": "2026-10-26T13:05:27.629052+00:00",
+      "exitCode": 0,
+      "outputFile": "docs/test-results/issue-10/07-node---check.txt"
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "site-data.js"
+      ],
+      "startedAtUtc": "2026-10-26T13:05:27.629143+00:00",
+      "completedAtUtc": "2026-10-26T13:05:27.658859+00:00",
+      "exitCode": 0,
+      "outputFile": "docs/test-results/issue-10/08-node---check.txt"
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "locales/ru.js"
+      ],
+      "startedAtUtc": "2026-10-26T13:05:27.658917+00:00",
+      "completedAtUtc": "2026-10-26T13:05:27.698599+00:00",
+      "exitCode": 0,
+      "outputFile": "docs/test-results/issue-10/09-node---check.txt"
+    },
+    {
+      "command": [
+        "node",
+        "--check",
+        "locales/en.js"
+      ],
+      "startedAtUtc": "2026-10-26T13:05:27.698654+00:00",
+      "completedAtUtc": "2026-10-26T13:05:27.731891+00:00",
+      "exitCode": 0,
+      "outputFile": "docs/test-results/issue-10/10-node---check.txt"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "startedAtUtc": "2026-10-26T13:05:27.731944+00:00",
+      "completedAtUtc": "2026-10-26T13:05:27.793810+00:00",
+      "exitCode": 0,
+      "outputFile": "docs/test-results/issue-10/11-git-diff.txt"
+    }
+  ],
+  "failed": 0,
+  "unrun": []
+}
