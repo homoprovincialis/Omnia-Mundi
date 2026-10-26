@@ -42,7 +42,7 @@ window.OMNIA_MESSAGES.en = {
   "how.a3": "Home",
   "how.span4": "How it works",
   "how.h11": "How it works",
-  "how.p1": "Omnia-Mundi is an international trading platform for products across different categories. It brings together buyers, independent participants and infrastructure. Participation is voluntary, and the final price must be transparent. The initial market is the eurozone, and the settlement currency is EUR.",
+  "how.p1": "Omnia-Mundi is an international trading platform connecting buyers, manufacturers, sellers and other independent participants in trade. Its goals are to develop international trade, create earning opportunities for participants and ensure transparent final product pricing.",
   "how.p2": "<strong>The site is under development.</strong> The catalog contains demonstration data. Real orders, payments, registration, stores and payouts have not launched yet. The following describes the planned process, not a trading operation available today.",
   "how.arialabel4": "On this page",
   "how.a4": "Participants",
