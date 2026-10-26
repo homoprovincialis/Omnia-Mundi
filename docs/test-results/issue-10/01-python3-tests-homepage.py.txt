@@ -1,0 +1,12 @@
+PASS 320px: 1 columns, all product text centered, 157px photos, fonts, overflow and keyboard
+PASS 375px: 2 columns, all product text centered, 157px photos, fonts, overflow and keyboard
+PASS 390px: 2 columns, all product text centered, 157px photos, fonts, overflow and keyboard
+PASS 430px: 2 columns, all product text centered, 157px photos, fonts, overflow and keyboard
+PASS 768px: 3 columns, all product text centered, 157px photos, fonts, overflow and keyboard
+PASS 1024px: 5 columns, all product text centered, 157px photos, fonts, overflow and keyboard
+PASS 1440px: 7 columns, all product text centered, 157px photos, fonts, overflow and keyboard
+PASS 1920px: 8 columns, all product text centered, 157px photos, fonts, overflow and keyboard
+PASS 2560px: 8 columns, all product text centered, 157px photos, fonts, overflow and keyboard
+PASS additional demo cards use available width inside centered 1920px container at 2560px
+PASS search, combined categories, empty state, responsive filters, future controls, focus and keyboard
+PASS eight attributed local assets, hashes, wallet ShareAlike notice, no external requests or JS errors, unchanged logo and TXT
