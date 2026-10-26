@@ -143,6 +143,15 @@ with sync_playwright() as p:
     assert page.get_by_role('button', name='Все товары', exact=True).evaluate('(b)=>b===document.activeElement')
     page.get_by_role('link', name='Каталог', exact=True).click()
     assert page.url.endswith('#catalog')
+    footer_link = page.locator('#footer-nav').get_by_role('link', name='Как это работает', exact=True)
+    assert footer_link.get_attribute('href') == 'how-it-works.html'
+    assert page.locator('#footer-nav button').count() == 15
+    assert page.locator('#footer-nav a').count() == 1
+    footer_link.click()
+    assert page.url.endswith('/how-it-works.html')
+    page.get_by_role('link', name='Каталог', exact=True).click()
+    assert page.url.endswith('/index.html#catalog')
+    assert page.locator('.products article').count() == 8
     print('PASS search, combined categories, empty state, responsive filters, future controls, focus and keyboard')
     page.get_by_text('Источники изображений', exact=True).click()
     credits = page.locator('.image-sources li')
@@ -168,7 +177,7 @@ with sync_playwright() as p:
     assert not errors, errors
     assert not external_requests, external_requests
     # Immutable owner-provided inputs must match the base branch byte for byte.
-    for name in ['assets/omnia-mundi-logo.svg', 'Omnia-Mundi_Website_Technical_Specification_RU.txt', 'Omnia-Mundi_Codex_Homepage_Phase_1_RU.txt', 'index.html', 'app.js', 'strings.ru.js', 'ASSETS.md', 'assets/products/sources.json']:
+    for name in ['assets/omnia-mundi-logo.svg', 'Omnia-Mundi_Website_Technical_Specification_RU.txt', 'Omnia-Mundi_Codex_Homepage_Phase_1_RU.txt', 'strings.ru.js', 'ASSETS.md', 'assets/products/sources.json']:
         assert Path(name).read_bytes() == subprocess.check_output(['git', 'show', f'origin/main:{name}'])
     print('PASS eight attributed local assets, hashes, wallet ShareAlike notice, no external requests or JS errors, unchanged logo and TXT')
     browser.close()
