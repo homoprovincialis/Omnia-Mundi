@@ -5,13 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Omnia-Mundi — демонстрационная главная страница каталога товаров." data-i18n-content="home.content1">
   <title data-i18n="home.title1">Omnia-Mundi — Каталог товаров</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="site-data.js"></script>
-  <script defer src="locales/ru.js"></script>
-  <script defer src="locales/en.js"></script>
-  <script defer src="i18n.js"></script>
-  <script defer src="navigation.js"></script>
-  <script defer src="app.js"></script>
+  <!-- Refresh local CSS and JS on every navigation; no cookies or manual cache clearing. -->
+  <script>
+    (() => {
+      const version = Date.now().toString(36);
+      const css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = 'style.css?v=' + version;
+      document.head.append(css);
+      const scripts = ["site-data.js","locales/ru.js","locales/en.js","i18n.js","navigation.js","app.js"];
+      for (const src of scripts) {
+        const script = document.createElement('script');
+        script.src = src + '?v=' + version;
+        script.async = false;
+        document.head.append(script);
+      }
+    })();
+  </script>
 </head>
 <body id="top">
   <a class="skip-link" href="#catalog" data-i18n="home.a1">К каталогу</a>
