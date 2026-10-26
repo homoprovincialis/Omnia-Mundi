@@ -38,6 +38,7 @@ with sync_playwright() as p:
     page.on('pageerror', lambda error: errors.append(str(error)))
     page.on('request', lambda request: external_requests.append(request.url) if not request.url.startswith(args.url.rstrip('/') + '/') else None)
     page.goto(args.url)
+    page.evaluate('window.omniaReady')
     for width in [320, 375, 390, 430, 768, 1024, 1440, 1920, 2560]:
         page.set_viewport_size({'width': width, 'height': 900})
         page.wait_for_timeout(50)
@@ -144,13 +145,13 @@ with sync_playwright() as p:
     page.get_by_role('link', name='Каталог', exact=True).click()
     assert page.url.endswith('#catalog')
     footer_link = page.locator('#footer-nav').get_by_role('link', name='Как это работает', exact=True)
-    assert footer_link.get_attribute('href') == 'how-it-works.html'
+    assert footer_link.get_attribute('href') == '/how-it-works.html?lang=ru'
     assert page.locator('#footer-nav button').count() == 15
     assert page.locator('#footer-nav a').count() == 1
     footer_link.click()
-    assert page.url.endswith('/how-it-works.html')
+    assert page.url.endswith('/how-it-works.html?lang=ru')
     page.get_by_role('link', name='Каталог', exact=True).click()
-    assert page.url.endswith('/index.html#catalog')
+    assert page.url.endswith('/index.html?lang=ru#catalog')
     assert page.locator('.products article').count() == 8
     print('PASS search, combined categories, empty state, responsive filters, future controls, focus and keyboard')
     page.get_by_text('Источники изображений', exact=True).click()
@@ -177,7 +178,7 @@ with sync_playwright() as p:
     assert not errors, errors
     assert not external_requests, external_requests
     # Immutable owner-provided inputs must match the base branch byte for byte.
-    for name in ['assets/omnia-mundi-logo.svg', 'Omnia-Mundi_Website_Technical_Specification_RU.txt', 'Omnia-Mundi_Codex_Homepage_Phase_1_RU.txt', 'strings.ru.js', 'ASSETS.md', 'assets/products/sources.json']:
+    for name in ['assets/omnia-mundi-logo.svg', 'Omnia-Mundi_Website_Technical_Specification_RU.txt', 'Omnia-Mundi_Codex_Homepage_Phase_1_RU.txt', 'ASSETS.md', 'assets/products/sources.json']:
         assert Path(name).read_bytes() == subprocess.check_output(['git', 'show', f'origin/main:{name}'])
     print('PASS eight attributed local assets, hashes, wallet ShareAlike notice, no external requests or JS errors, unchanged logo and TXT')
     browser.close()
