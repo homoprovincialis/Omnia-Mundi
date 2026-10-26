@@ -82,7 +82,7 @@ window.OMNIA_MESSAGES.en = {
   "how.p7": "<strong>Store Selling Cost (SSC)</strong> applies only to future in-person sales at operating physical Omnia-Mundi Stores. SSC does not apply to ordinary online marketplace orders, even when a Receiver handles or hands over the product or a customer collects an online order at a store. Only after a specific store opens will SSC be calculated individually from its justified expenses, product quantities and other factors; it may change daily. For an in-person store sale, the customer pays SSC as a separately displayed part of the final price. SSC is accounted for before profit P and <strong>is not store profit</strong>.",
   "how.p8": "Special deposits, till requirements and remittance schedules for store consignment require separate decisions and contracts.",
   "how.h24": "How pricing and income are formed",
-  "how.p9": "Final customer price = total costs + profit equal to 30% of total costs. Costs include the initial product cost, delivery, taxes and documented expenses. In-store purchases at operating physical stores also include SSC; online orders do not.",
+  "how.p9": "Final customer price = total costs + profit equal to 30% of total costs. Costs include the initial product cost, delivery, taxes and documented expenses.",
   "how.p10": "Manufacturers and Sellers set their own transfer price, which may already include their commercial income. This is different from a Procurer's documented purchase.",
   "how.p11": "The Moderator receives 20% of the profit in total: 5% for the Sender Curator, 5% for the Receiver Curator and 10% for the Order Supervisor. These are parts of the overall share, not additional payments on top of 20%.",
   "how.caption1": "Profit distribution",
