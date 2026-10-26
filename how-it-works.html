@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Как устроена Omnia-Mundi: участники, торговые цепочки, прозрачная цена и распределение прибыли.">
+  <title>Как это работает — Omnia-Mundi</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="strings.ru.js"></script>
+  <script defer src="navigation.js"></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#content">К содержанию</a>
+  <div class="page">
+    <header class="header">
+      <a href="index.html" class="logo-link" aria-label="Omnia-Mundi — на главную"><img src="assets/omnia-mundi-logo.svg" width="160" alt="OMNIA-MUNDI"></a>
+      <a class="search catalog-search-link" href="index.html#catalog"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span>Поиск товаров в каталоге</span></a>
+      <div class="account-actions">
+        <button type="button" data-future><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3.5"/><path d="M4 21v-3a8 8 0 0 1 16 0v3"/></svg><span>Войти</span></button>
+        <button type="button" data-future><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 3h3l3 12h11l3-9H6"/><circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/></svg><span>Корзина</span></button>
+      </div>
+    </header>
+    <nav class="primary-nav" aria-label="Основная навигация">
+      <a href="index.html#catalog">Каталог</a>
+      <button type="button" data-future>Производители</button>
+      <button type="button" data-future>Бесплатные товары</button>
+      <button type="button" data-future>Запросы</button>
+      <button type="button" class="request-link" data-future>+ Найти отсутствующий товар</button>
+    </nav>
+    <main id="content" class="how-it-works" aria-labelledby="page-title">
+      <nav class="back-links" aria-label="Возврат"><a href="index.html">Главная</a><span aria-hidden="true"> / </span><span aria-current="page">Как это работает</span></nav>
+      <h1 id="page-title">Как это работает</h1>
+      <p>Omnia-Mundi — международная торговая платформа для товаров разных категорий. Она объединяет покупателей, независимых участников и инфраструктуру. Участие добровольное, а конечная цена должна быть прозрачной. Начальный рынок — еврозона, расчётная валюта — EUR.</p>
+      <p class="development-status" id="development-status"><strong>Сайт в разработке.</strong> Каталог содержит демонстрационные данные. Реальные заказы, платежи, регистрация, магазины и выплаты ещё не запущены. Ниже описан проектируемый механизм, а не доступная сегодня торговая операция.</p>
+      <nav class="contents" aria-label="На этой странице"><a href="#participants">Участники</a><a href="#purchase">Покупка</a><a href="#stores">Физические магазины</a><a href="#income">Цена и доходы</a></nav>
+
+      <section id="participants" aria-labelledby="participants-title">
+        <h2 id="participants-title">Кто участвует</h2>
+        <dl class="role-list">
+          <div><dt>Customer</dt><dd>Покупатель — человек или организация. Может одновременно участвовать и в профессиональных ролях.</dd></div>
+          <div><dt>Procurer</dt><dd>Находит и покупает товар у третьих лиц за свои деньги. Документирует фактическую закупочную цену и первую доставку.</dd></div>
+          <div><dt>Manufacturer</dt><dd>Независимый производитель. Указывает собственную цену передачи и может предлагать продукцию магазинам.</dd></div>
+          <div><dt>Seller</dt><dd>Законный владелец товара, в том числе бывшего в употреблении. Указывает состояние и цену передачи.</dd></div>
+          <div><dt>Receiver</dt><dd>Принимает, хранит и передаёт товар дальше. Его специализации: <strong>Home</strong> — небольшие посылки в разрешённом домашнем помещении; <strong>Warehouse</strong> — складской учёт и обработка; <strong>Store</strong> — независимый физический магазин. Не каждый заказ проходит склад или магазин.</dd></div>
+          <div><dt>Moderator</dt><dd>Сопровождает участников и координирует заказ. <strong>Sender Curator</strong> — куратор отправителя, <strong>Receiver Curator</strong> — куратор Receiver, <strong>Order Supervisor</strong> — координатор конкретного заказа. Один человек может выполнять несколько специализаций.</dd></div>
+        </dl>
+        <p>Пять зарабатывающих ролей — Procurer, Manufacturer, Seller, Receiver и Moderator. Один пользователь может иметь несколько ролей с отдельными допусками. IT/Admin/Finance/Compliance/Support — служебные полномочия, а не дополнительные зарабатывающие роли.</p>
+      </section>
+
+      <section id="purchase" aria-labelledby="purchase-title">
+        <h2 id="purchase-title">Как проходит обычная покупка</h2>
+        <ol class="purchase-steps">
+          <li><strong>Выбор или запрос.</strong> Customer выбирает доступное предложение или оставляет Request a Product, если нужного товара нет.</li>
+          <li><strong>Уточнение условий.</strong> Для отсутствующего товара Order Supervisor уточняет запрос. Задачу можно предложить подходящему Procurer; он принимает её добровольно.</li>
+          <li><strong>Согласование цены.</strong> Quote содержит товар, доставку, иные расходы и конечную цену. Покупатель подтверждает цену до оплаты; при её изменении требуется новое согласие.</li>
+          <li><strong>Подготовка и передача.</strong> Источник товара — один из Procurer, Manufacturer или Seller. Маршрут и способ получения согласуются для конкретной сделки.</li>
+          <li><strong>Получение и завершение.</strong> Участники подтверждают приёмку и доставку. Возврат учитывает применимые правила, вид продажи и категорию товара. Затем сделка окончательно завершается.</li>
+          <li><strong>Расчёты.</strong> Прибыль распределяется после финализации по утверждённым правилам. Возмещение документированных расходов и возвратный депозит — отдельные суммы, не прибыль.</li>
+        </ol>
+        <p class="trade-chain" aria-label="Обычная торговая цепочка"><span>Один отправитель: Procurer / Manufacturer / Seller</span><span aria-hidden="true">→</span><span>Receiver</span><span aria-hidden="true">→</span><span>Финальный перевозчик или самовывоз</span><span aria-hidden="true">→</span><span>Customer</span></p>
+        <p>Это обычная схема, а не обещание двух обязательных пересылок: возможны согласованные самовывоз, прямая поставка в магазин и местная доставка.</p>
+      </section>
+
+      <section id="stores" aria-labelledby="stores-title">
+        <h2 id="stores-title">Как работают физические магазины</h2>
+        <p class="trade-chain" aria-label="Магазинная торговая цепочка"><span>Manufacturer</span><span aria-hidden="true">→</span><span>Store Receiver</span><span aria-hidden="true">→</span><span>Customer · продажа через POS</span></p>
+        <p>Store Receiver — независимый владелец магазина: он сам оплачивает открытие и работу. Omnia-Mundi предоставляет бренд и организационную инфраструктуру по согласованным условиям, без вступительного взноса и регулярного роялти.</p>
+        <p>Manufacturer может передать партию на консигнацию <strong>без предварительного выкупа</strong> магазином. Условия согласуются, а магазин сам решает, принимать ли ассортимент. По согласованной конструкции собственником до продажи остаётся Manufacturer; юридические условия закрепляются договором.</p>
+        <p><strong>Store Selling Cost (SSC)</strong> возмещает обоснованные расходы магазина на продажу: аренду, персонал, коммунальные услуги, амортизацию и другие допустимые статьи. SSC учитывается до расчёта распределяемой прибыли P и <strong>не является прибылью магазина</strong>. Возмещение SSC и доля прибыли Store Receiver — разные суммы.</p>
+        <p>Специальные депозиты, кассовые требования и сроки перечислений для магазинной консигнации требуют отдельных решений и договоров.</p>
+      </section>
+
+      <section id="income" aria-labelledby="income-title">
+        <h2 id="income-title">Из чего складываются цена и доходы</h2>
+        <p>Первоначальная закупочная цена Procurer или согласованная цена передачи Manufacturer/Seller, доставка, налоги, подтверждённые прямые расходы и SSC для магазина учитываются отдельно. После их вычета определяется положительная распределяемая прибыль P. <strong>P — не конечная цена покупателя.</strong></p>
+        <p>Manufacturer и Seller сами назначают цену передачи: она может уже включать их коммерческий доход. Это не то же самое, что документированная закупка Procurer.</p>
+        <p id="moderator-total">Moderator в сумме получает 20% P: 5% Sender Curator, 5% Receiver Curator и 10% Order Supervisor. Это части его общей доли, не дополнительные выплаты поверх 20%.</p>
+        <table class="profit-example">
+          <caption>Учебный пример: P = 10,00 € — только прибыль, не цена товара</caption>
+          <thead><tr><th scope="col">Получатель</th><th scope="col">Доля P</th><th scope="col">Из P = 10 €</th></tr></thead>
+          <tbody>
+            <tr data-share="20" data-cents="200"><th scope="row">Один источник: Procurer или Manufacturer или Seller</th><td>20%</td><td>2,00 €</td></tr>
+            <tr data-share="20" data-cents="200"><th scope="row">Receiver</th><td>20%</td><td>2,00 €</td></tr>
+            <tr data-share="5" data-cents="50"><th scope="row">Sender Curator</th><td>5%</td><td>0,50 €</td></tr>
+            <tr data-share="5" data-cents="50"><th scope="row">Receiver Curator</th><td>5%</td><td>0,50 €</td></tr>
+            <tr data-share="10" data-cents="100"><th scope="row">Order Supervisor</th><td>10%</td><td>1,00 €</td></tr>
+            <tr data-share="20" data-cents="200"><th scope="row">Omnia-Mundi</th><td>20%</td><td>2,00 €</td></tr>
+            <tr data-share="20" data-cents="200"><th scope="row">Protection Fund</th><td>20%</td><td>2,00 €</td></tr>
+          </tbody>
+          <tfoot><tr><th scope="row">Всего</th><td>100%</td><td>10,00 €</td></tr></tfoot>
+        </table>
+        <p><strong>Protection Fund — отдельный резерв защиты, не операционный доход Omnia-Mundi.</strong> Его средства учитываются отдельно от дохода компании.</p>
+        <p>Прибыль участников начисляется по правилам завершённых сделок. В стандартной цепочке Procurer после выполнения своей части и подтверждения оплаты клиента получает раннее возмещение документированной закупки и первой отправки, но свои 20% P — только после окончательного закрытия. В обычной сделке Manufacturer/Seller получают согласованную цену передачи, возмещение первой отправки и долю прибыли после успешного окончательного закрытия. Для консигнации сроки определяются отдельно.</p>
+        <p>Стандартный депозит Receiver возвратный: он обеспечивает первоначальную цену товара и первую доставку отправителя. Это не доход и не прибыль; он возвращается после надлежащего подтверждения доставки или подтверждённой невиновности Receiver в срыве операции. На магазинную консигнацию этот депозит автоматически не переносится.</p>
+        <p>AI может помогать с рекомендациями и объяснениями, но не гарантирует доход и не принимает автоматически рискованные решения: значимые решения контролирует человек.</p>
+      </section>
+      <p class="back-to-catalog"><a href="index.html#catalog">Вернуться в каталог</a></p>
+    </main>
+    <footer><nav id="footer-nav" aria-label="Дополнительные разделы"></nav></footer>
+  </div>
+  <dialog aria-labelledby="notice-title" id="notice"><p id="notice-title"></p><form method="dialog"><button id="notice-close"></button></form></dialog>
+</body>
+</html>

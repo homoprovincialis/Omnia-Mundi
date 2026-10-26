@@ -6,20 +6,9 @@ const grid = document.querySelector('#products');
 const filterToggle = document.querySelector('#filter-toggle');
 const filters = document.querySelector('#filters');
 const mobile = window.matchMedia('(max-width: 639px)');
-const notice = document.querySelector('#notice');
 let selectedCategory = 'all';
 const formatPrice = new Intl.NumberFormat('ru-RU', {style:'currency', currency:'EUR'});
 
-function showFuture() { if (!notice.open) notice.showModal(); }
-document.querySelector('#notice-title').textContent = copy.future;
-document.querySelector('#notice-close').textContent = copy.close;
-document.querySelectorAll('[data-future]').forEach(button => button.addEventListener('click', showFuture));
-for (const label of copy.footer) {
-  const button = document.createElement('button');
-  button.type = 'button'; button.textContent = label;
-  button.addEventListener('click', showFuture);
-  document.querySelector('#footer-nav').append(button);
-}
 for (const [id, label] of copy.categories) {
   const button = document.createElement('button');
   button.type = 'button'; button.textContent = label;
