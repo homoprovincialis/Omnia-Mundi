@@ -90,16 +90,16 @@ with sync_playwright() as p:
     # Both directions plus search and logo are real HTTP navigation, not dialogs.
     assert page.locator('#footer-nav').get_by_role('link',name='Как это работает').get_attribute('aria-current') == 'page'
     page.get_by_role('link',name='Каталог',exact=True).click()
-    assert page.url == base + '/index.html#catalog'
+    assert page.url == base + '/index.html?lang=ru#catalog'
     assert page.locator('.products article').count() == 8
     link = page.locator('#footer-nav').get_by_role('link',name='Как это работает',exact=True)
     link.focus(); page.keyboard.press('Enter')
-    expect(page).to_have_url(base + '/how-it-works.html')
+    expect(page).to_have_url(base + '/how-it-works.html?lang=ru')
     page.get_by_role('link',name='Поиск товаров в каталоге',exact=True).click()
-    assert page.url == base + '/index.html#catalog'
+    assert page.url == base + '/index.html?lang=ru#catalog'
     page.locator('#footer-nav').get_by_role('link',name='Как это работает').click()
     page.locator('.logo-link').click()
-    assert page.url == base + '/index.html'
+    assert page.url == base + '/index.html?lang=ru'
     assert page.locator('.products article').count() == 8
     assert not errors and not external and not failed, (errors,external,failed)
     # The informational text and return links work even if JavaScript is unavailable.

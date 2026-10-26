@@ -3,50 +3,56 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Omnia-Mundi — демонстрационная главная страница каталога товаров.">
-  <title>Omnia-Mundi — Каталог товаров</title>
+  <meta name="description" content="Omnia-Mundi — демонстрационная главная страница каталога товаров." data-i18n-content="home.content1">
+  <title data-i18n="home.title1">Omnia-Mundi — Каталог товаров</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="strings.ru.js"></script>
+  <script defer src="site-data.js"></script>
+  <script defer src="locales/ru.js"></script>
+  <script defer src="locales/en.js"></script>
+  <script defer src="i18n.js"></script>
   <script defer src="navigation.js"></script>
   <script defer src="app.js"></script>
 </head>
 <body id="top">
-  <a class="skip-link" href="#catalog">К каталогу</a>
+  <a class="skip-link" href="#catalog" data-i18n="home.a1">К каталогу</a>
   <div class="page">
     <header class="header">
-      <a href="#top" class="logo-link" aria-label="Omnia-Mundi — наверх страницы"><img src="assets/omnia-mundi-logo.svg" width="160" alt="OMNIA-MUNDI"></a>
+      <a href="#top" class="logo-link" aria-label="Omnia-Mundi — наверх страницы" data-i18n-aria-label="home.arialabel1"><img src="assets/omnia-mundi-logo.svg" width="160" alt="OMNIA-MUNDI"></a>
       <form class="search" role="search">
         <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>
-        <input type="search" id="search" aria-label="Поиск товаров…" placeholder="Поиск товаров…" autocomplete="off">
+        <input type="search" id="search" aria-label="Поиск товаров…" placeholder="Поиск товаров…" autocomplete="off" data-i18n-aria-label="home.arialabel2" data-i18n-placeholder="home.placeholder1">
       </form>
+      <div class="header-tools">
       <div class="account-actions">
-        <button type="button" data-future><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3.5"/><path d="M4 21v-3a8 8 0 0 1 16 0v3"/></svg><span>Войти</span></button>
-        <button type="button" data-future><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 3h3l3 12h11l3-9H6"/><circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/></svg><span>Корзина</span></button>
+        <button type="button" data-future><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3.5"/><path d="M4 21v-3a8 8 0 0 1 16 0v3"/></svg><span data-i18n="home.span1">Войти</span></button>
+        <button type="button" data-future><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 3h3l3 12h11l3-9H6"/><circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/></svg><span data-i18n="home.span2">Корзина</span></button>
+      </div>
+        <nav class="language-switcher" aria-label="Язык сайта" data-i18n-aria-label="common.language"><button type="button" data-language="ru" aria-pressed="true">RU</button><span aria-hidden="true">|</span><button type="button" data-language="en" aria-pressed="false">EN</button></nav>
       </div>
     </header>
-    <nav class="primary-nav" aria-label="Основная навигация">
-      <a href="#catalog">Каталог</a>
-      <button type="button" data-future>Производители</button>
-      <button type="button" data-future>Бесплатные товары</button>
-      <button type="button" data-future>Запросы</button>
-      <button type="button" class="request-link" data-future>+ Найти отсутствующий товар</button>
+    <nav class="primary-nav" aria-label="Основная навигация" data-i18n-aria-label="home.arialabel3">
+      <a href="#catalog" data-i18n="home.a2">Каталог</a>
+      <button type="button" data-future data-i18n="home.button1">Производители</button>
+      <button type="button" data-future data-i18n="home.button2">Бесплатные товары</button>
+      <button type="button" data-future data-i18n="home.button3">Запросы</button>
+      <button type="button" class="request-link" data-future data-i18n="home.button4">+ Найти отсутствующий товар</button>
     </nav>
     <main class="layout">
-      <aside class="filters" id="filters" aria-label="Фильтры каталога">
-        <section><h2>Категории</h2><div id="categories"></div></section>
-        <section><h2>Страна</h2><p>Все страны</p></section>
-        <section><h2>Цена</h2><p>EUR (€)</p></section>
+      <aside class="filters" id="filters" aria-label="Фильтры каталога" data-i18n-aria-label="home.arialabel4">
+        <section><h2 data-i18n="home.h21">Категории</h2><div id="categories"></div></section>
+        <section><h2 data-i18n="home.h22">Страна</h2><p data-i18n="home.p1">Все страны</p></section>
+        <section><h2 data-i18n="home.h23">Цена</h2><p data-i18n="home.p2">EUR (€)</p></section>
       </aside>
       <section class="catalog" id="catalog" aria-labelledby="catalog-title">
-        <div class="catalog-heading"><h1 id="catalog-title">Каталог товаров</h1><button type="button" id="filter-toggle" aria-controls="filters" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/><path class="slider" d="M8 3v6M16 9v6M10 15v6"/></svg>Фильтры</button></div>
-        <p class="demo-label">Демонстрационные товары</p>
+        <div class="catalog-heading"><h1 id="catalog-title" data-i18n="home.h11">Каталог товаров</h1><button type="button" id="filter-toggle" aria-controls="filters" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/><path class="slider" d="M8 3v6M16 9v6M10 15v6"/></svg><span data-i18n="home.filtersToggle">Фильтры</span></button></div>
+        <p class="demo-label" data-i18n="home.p3">Демонстрационные товары</p>
         <div class="products" id="products"></div>
         <p id="empty" hidden></p>
         <p class="result-status" id="result-status" role="status" aria-live="polite"></p>
-        <noscript>Для локального поиска и отображения демокаталога включите JavaScript. Реальные продажи не доступны.</noscript>
+        <noscript data-i18n="home.noscript1">Для локального поиска и отображения демокаталога включите JavaScript. Реальные продажи не доступны.</noscript>
       </section>
     </main>
-    <footer><nav id="footer-nav" aria-label="Дополнительные разделы"></nav></footer>
+    <footer><nav id="footer-nav" aria-label="Дополнительные разделы" data-i18n-aria-label="home.arialabel5"></nav></footer>
   </div>
   <dialog aria-labelledby="notice-title" id="notice"><p id="notice-title"></p><form method="dialog"><button id="notice-close"></button></form></dialog>
 </body>
