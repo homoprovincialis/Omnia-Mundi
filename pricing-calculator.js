@@ -55,7 +55,8 @@
   function render() {
     const inStore = routes.find(r => r.checked)?.value === 'store';
     sscField.hidden = !inStore;
-    sscRow.hidden = !inStore;
+    // Always display the SSC breakdown row: online orders explicitly show €0.
+    sscRow.hidden = false;
     inputs.ssc.disabled = !inStore;
     receiverLabel.dataset.i18n = inStore ? 'pricing.calc.receiverStore' : 'pricing.calc.receiver';
     receiverLabel.textContent = i18n.t(receiverLabel.dataset.i18n);
