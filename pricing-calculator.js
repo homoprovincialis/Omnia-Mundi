@@ -8,17 +8,19 @@
     product: root.querySelector('#pricing-product'),
     shipping: root.querySelector('#pricing-shipping'),
     other: root.querySelector('#pricing-other'),
+    duty: root.querySelector('#pricing-duty'),
     ssc: root.querySelector('#pricing-ssc'),
     tax: root.querySelector('#pricing-tax'),
   };
   const routes = [...root.querySelectorAll('input[name="pricing-route"]')];
   const sscField = root.querySelector('#pricing-ssc-field');
+  const sscRow = root.querySelector('#pricing-ssc-row');
   const receiverLabel = root.querySelector('#pricing-receiver-label');
   const error = root.querySelector('#pricing-error');
   const outputs = Object.fromEntries(
     [...root.querySelectorAll('[data-calc]')].map(node => [node.dataset.calc, node])
   );
-  const defaultValues = {product:'50',shipping:'5',other:'0',ssc:'8',tax:'0'};
+  const defaultValues = {product:'50',shipping:'5',other:'0',duty:'0',ssc:'8',tax:'20'};
   const roles = [
     ['source', 20], ['receiver', 20], ['sender', 5],
     ['curator', 5], ['supervisor', 10], ['platform', 20], ['fund', 20],
@@ -53,6 +55,7 @@
   function render() {
     const inStore = routes.find(r => r.checked)?.value === 'store';
     sscField.hidden = !inStore;
+    sscRow.hidden = !inStore;
     inputs.ssc.disabled = !inStore;
     receiverLabel.dataset.i18n = inStore ? 'pricing.calc.receiverStore' : 'pricing.calc.receiver';
     receiverLabel.textContent = i18n.t(receiverLabel.dataset.i18n);
@@ -69,15 +72,33 @@
       return;
     }
     const costs = parsed.product + parsed.shipping + parsed.other + (inStore ? parsed.ssc : 0);
-    const profit = Math.round(costs * 30 / 100);
-    const beforeTax = costs + profit;
-    // The manually entered example tax rate is expressed in hundredths of a percent.
-    const tax = Math.round(beforeTax * parsed.tax / 10000);
-    const final = beforeTax + tax;
+    const duty = parsed.duty;
+    const base = costs + duty;
+    // VAT on the VAT-exclusive sales price includes trading profit.
+    // Owner-approved rule: trading profit is 30% of all costs INCLUDING the resulting VAT.
+    // Calculate both amounts together in integer cents, rather than applying VAT twice.
+    let profit = Math.round(base * 30 / 100);
+    let vat = 0;
+    let converged = false;
+    for (let i = 0; i < 100; i++) {
+      vat = Math.round((base + profit) * parsed.tax / 10000);
+      const nextProfit = Math.round((base + vat) * 30 / 100);
+      if (nextProfit === profit) { converged = true; break; }
+      profit = nextProfit;
+    }
+    if (!converged) {
+      error.hidden = false;
+      Object.values(outputs).forEach(el => { el.textContent = '—'; });
+      return;
+    }
+    const allExpenses = base + vat;
+    const final = allExpenses + profit;
     const allocation = allocate(profit);
     const values = {
-      cost:costs, profit, beforeTax, tax, final, ...allocation,
-      distributed:Object.values(allocation).reduce((sum, value) => sum + value, 0),
+      product: parsed.product, shipping: parsed.shipping, other: parsed.other,
+      ssc: inStore ? parsed.ssc : 0, cost: costs, duty, vat,
+      allExpenses, profit, final, ...allocation,
+      distributed: Object.values(allocation).reduce((sum, value) => sum + value, 0),
     };
     for (const [key, el] of Object.entries(outputs)) el.textContent = format(values[key]);
   }
