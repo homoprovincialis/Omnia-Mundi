@@ -11,3 +11,28 @@ footer nav a{font-size:16px;min-height:25px;display:inline-flex;align-items:cent
 .header-tools{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:2px}.language-switcher{display:flex;align-items:center;gap:6px;font-size:15px;white-space:nowrap}.language-switcher button{min-height:24px}.language-switcher [aria-pressed=true]{font-weight:600;text-decoration:underline}.language-switcher span{color:#6b7280}
 /* Earn page: shared informational layout, one honest future-action control. */
 .earn-page .earn-apply{font-size:16px;min-height:36px;padding:4px 10px;border:1px solid #e5e7eb;border-radius:4px;color:#2463cc}
+
+
+/* Pricing & Transparency: compact, keyboard-accessible demo calculator. */
+.pricing-calculator{border:1px solid #e5e7eb;border-radius:8px;padding:18px;max-width:100%;min-width:0}
+.pricing-routes{border:0;padding:0;margin:0 0 18px;display:flex;flex-wrap:wrap;gap:10px 25px}
+.pricing-routes legend{font-weight:600;padding:0;margin-bottom:9px}
+.pricing-routes label{display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.pricing-routes input{width:18px;height:18px;accent-color:#2463cc}
+.pricing-inputs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.pricing-field{display:flex;flex-direction:column;gap:5px;min-width:0}
+.pricing-field[hidden]{display:none!important}
+.pricing-field label{font-size:15px}
+.pricing-field input{box-sizing:border-box;min-width:0;width:100%;min-height:40px;padding:8px 9px;border:1px solid #9ca3af;border-radius:4px;background:#fff;color:#111;font:inherit}
+.pricing-field input[aria-invalid="true"]{border-color:#b91c1c}
+.pricing-note{color:#4b5563;font-size:15px;line-height:1.5;margin-top:12px!important}
+.pricing-error{color:#991b1b;font-size:15px}
+.pricing-error[hidden]{display:none!important}
+.pricing-calculator h3{font-size:17px;margin:22px 0 8px}
+.pricing-results{margin:6px 0 16px}
+.pricing-results td{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pricing-results th:first-child{width:65%}
+.pricing-reset{font:inherit;font-size:15px;min-height:38px;padding:7px 11px;border:1px solid #9ca3af;border-radius:4px;background:#fff;cursor:pointer}
+.pricing-reset:hover{background:#f3f4f6}
+.pricing-page :is(button,input):focus-visible{outline:3px solid #2463cc;outline-offset:2px}
+@media(max-width:480px){.pricing-calculator{padding:12px}.pricing-inputs{grid-template-columns:minmax(0,1fr)}.pricing-results th:first-child{width:60%}.pricing-results td{white-space:normal}}
