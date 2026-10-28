@@ -64,7 +64,7 @@
         <h2 id="overview-title" data-i18n="pricing.overview.title">Что означает прозрачная цена?</h2>
         <p data-i18n="pricing.overview.1">Покупатель должен знать полную стоимость покупки до оплаты. В Omnia-Mundi он также сможет увидеть, из каких частей она складывается и как распределяется торговая прибыль.</p>
         <p data-i18n-html="pricing.overview.2">Это важно и для участников: Manufacturer, Procurer, Seller, Receiver и Moderator смогут видеть суммы, относящиеся к их работе. <strong>Прозрачная цена не означает, что каждый товар обязательно будет дешевле конкурентов.</strong> Она означает понятный, проверяемый расчёт без скрытых начислений.</p>
-        <p data-i18n="pricing.overview.3">На ценнике или перед подтверждением онлайн-заказа показывается итоговая сумма. Подробная детализация объясняет первоначальную цену товара, затраты, торговую прибыль, её получателей и налоги.</p>
+        <p data-i18n="pricing.overview.3">На ценнике или перед подтверждением заказа показывается полная конечная цена. Детализация отдельно показывает стоимость товара, доставку, другие расходы, налоги и общую торговую прибыль участников сделки. SSC применяется только при покупке непосредственно в торговом зале; при онлайн-заказе SSC = 0.</p>
       </section>
       <section id="source" aria-labelledby="source-title">
         <h2 id="source-title" data-i18n="pricing.source.title">Кто устанавливает первоначальную цену товара?</h2>
@@ -78,26 +78,29 @@
         <h2 id="costs-title" data-i18n="pricing.costs.title">Какие расходы прибавляются к цене товара?</h2>
         <p data-i18n="pricing.costs.1">Чтобы товар оказался у покупателя, участникам могут потребоваться перевозка, упаковка, обработка отправления, хранение и другие реальные услуги. В расчёт включаются только относящиеся к конкретной продаже обоснованные расходы.</p>
         <p data-i18n="pricing.costs.2">Стоимость каждого необходимого этапа перевозки учитывается отдельно. Если услуга или перевозка не выполнялась, её стоимость не добавляется. Один и тот же расход нельзя учитывать дважды.</p>
-        <p data-i18n="pricing.costs.3">Покупатель сможет увидеть эти расходы в детализации до оплаты, а участники — соответствующие подтверждения и расчёты.</p>
+        <p data-i18n="pricing.costs.3">Покупатель оплачивает все эти расходы в составе конечной цены. До оплаты их можно будет увидеть отдельно в детализации, а участникам будут доступны соответствующие подтверждения.</p>
       </section>
       <section id="store" aria-labelledby="store-title">
         <h2 id="store-title" data-i18n="pricing.store.title">Как учитываются расходы физического магазина?</h2>
         <p data-i18n="pricing.store.1">Магазин Store Receiver должен оплачивать помещение, работников, коммунальные услуги, оборудование и обслуживание. Эти затраты существуют даже тогда, когда магазин продаёт товары, которые не выкупил заранее у Manufacturer.</p>
-        <p data-i18n-html="pricing.store.2">Поэтому в модели физических магазинов предусмотрена отдельная статья — <strong>Store Selling Cost (SSC), или стоимость реализации товара в магазине</strong>. Она компенсирует обоснованную часть расходов конкретного магазина, относящуюся к продаже товара.</p>
+        <p data-i18n-html="pricing.store.2">При <strong>покупке непосредственно в торговом зале</strong> предусмотрена отдельная статья — <strong>Store Selling Cost (SSC), или стоимость реализации товара в магазине</strong>. Она компенсирует обоснованную часть расходов конкретного магазина, относящуюся к такой продаже.</p>
         <p data-i18n="pricing.store.3">В SSC могут входить аренда, оплата труда, коммунальные услуги, обслуживание и амортизация оборудования. Сумма рассчитывается по согласованной методике на основе фактических условий магазина и объёма его продаж. Для разных магазинов и товаров она может различаться.</p>
-        <p data-i18n-html="pricing.store.4"><strong>SSC включается в расходы до расчёта торговой прибыли и сам по себе не является прибылью Store Receiver.</strong> Собственная доля торговой прибыли магазина начисляется отдельно. В обычной доставке без продажи через физический магазин SSC не применяется.</p>
+        <p data-i18n-html="pricing.store.4"><strong>SSC — это расход, а не прибыль Store Receiver.</strong> Он входит в базу расчёта общей торговой прибыли только при покупке непосредственно в торговом зале. При онлайн-заказе магазин выполняет функцию Warehouse Receiver и SSC = 0, в том числе при самовывозе или доставке из магазина. Собственная доля прибыли Receiver начисляется отдельно.</p>
       </section>
       <section id="markup" aria-labelledby="markup-title">
         <h2 id="markup-title" data-i18n="pricing.markup.title">Как рассчитывается торговая прибыль и конечная цена?</h2>
-        <p data-i18n="pricing.markup.1">Сначала складываются первоначальная цена товара и все относящиеся к продаже обоснованные расходы. Если продажа проходит через Store Receiver, в эти расходы добавляется соответствующий SSC.</p>
-        <p data-i18n-html="pricing.markup.2">По утверждённой стандартной модели Omnia-Mundi <strong>торговая прибыль составляет 30% от полученной суммы расходов</strong>. Это не 30% от конечной цены покупателя.</p>
-        <p data-i18n-html="pricing.markup.3">Затем к сумме расходов и торговой прибыли добавляются применимые налоги. <strong>Налоги не входят в основу расчёта распределяемой прибыли и не делятся между участниками.</strong> Их начисление и перечисление осуществляет юридически ответственная сторона по правилам страны продажи.</p>
-        <p data-i18n-html="pricing.markup.4">Таким образом: <strong>полная цена покупателя = первоначальная цена товара + обоснованные расходы (включая SSC, когда он применяется) + торговая прибыль 30% от суммы этих расходов + применимые налоги</strong>.</p>
-        <p data-i18n="pricing.markup.5">Окончательная сумма сообщается покупателю до оплаты. Фактическая ставка и правила расчёта налогов определяются для конкретной страны, товара и продажи.</p>
+        <p data-i18n-html="pricing.markup.1">Сначала складываются первоначальная стоимость товара, доставка и другие обоснованные расходы. <strong>SSC добавляется только при покупке непосредственно в торговом зале.</strong> При онлайн-заказе, даже обработанном магазином в функции Warehouse Receiver, SSC = 0. Это расходы до налогов.</p>
+        <p data-i18n="pricing.markup.2">Затем определяются все применимые налоги и обязательные сборы, включая НДС. Их виды и ставки зависят от страны, категории товара и условий продажи. Покупатель оплачивает и эти суммы в составе конечной цены.</p>
+        <p data-i18n-html="pricing.markup.3">Первоначальную цену товара, доставку, SSC при его применении, другие обоснованные расходы и рассчитанные налоги мы объединяем в отдельную категорию: <strong>«Все расходы, включая налоги»</strong>.</p>
+        <p data-i18n-html="pricing.markup.4"><strong>Общая торговая прибыль всех участников сделки составляет 30% от всех расходов, включая рассчитанные налоги.</strong> Это прибыль всей торговой цепочки, а не доход одной компании. Она рассчитывается от расходов с налогами, а не от конечной цены покупателя.</p>
+        <p data-i18n-html="pricing.markup.5">НДС с продажи обычно начисляется на цену без НДС, уже включающую торговую прибыль. А по нашей модели размер прибыли зависит от суммы НДС. Поэтому <strong>НДС и торговая прибыль рассчитываются взаимосвязанно</strong>, без двойного начисления налога.</p>
+        <p data-i18n-html="pricing.markup.6">Итоговая формула: <strong>все расходы, включая рассчитанные налоги, + общая торговая прибыль всех участников сделки (30% от этих расходов) = конечная цена покупателя</strong>. Покупатель оплачивает одну сумму, но расходы, налоги и прибыль показаны отдельно; прибыль находится в конце детализации.</p>
+        <p data-i18n="pricing.markup.7">При одинаковых остальных расходах более высокая ставка НДС или другие применимые налоги увеличивают общую базу расчёта, поэтому увеличивается и абсолютная торговая прибыль. Один и тот же товар в разных странах или по разным налоговым ставкам может иметь разную конечную цену и прибыль.</p>
+        <p data-i18n="pricing.markup.8">При этом налоги не становятся прибылью участников: они учитываются и перечисляются отдельно по закону. Возмещаемый или принимаемый к вычету НДС не должен повторно учитываться как невозмещаемый расход. Конкретные ставки, освобождения и налоговые правила определяются по стране и виду сделки.</p>
       </section>
       <section id="shares" aria-labelledby="shares-title">
         <h2 id="shares-title" data-i18n="pricing.shares.title">Кто получает торговую прибыль?</h2>
-        <p data-i18n="pricing.shares.1">После завершения стандартной сделки торговая прибыль распределяется между пятью направлениями поровну: по 20% каждому.</p>
+        <p data-i18n="pricing.shares.1">Общая торговая прибыль принадлежит не одному участнику: после завершения стандартной сделки она распределяется между пятью направлениями поровну — по 20% каждому.</p>
         <p data-i18n-html="pricing.shares.2"><strong>Источник товара</strong> — один из трёх участников: Procurer, Manufacturer или Seller. Его доля составляет 20% торговой прибыли, помимо предусмотренной оплаты товара или возмещения закупки.</p>
         <p data-i18n-html="pricing.shares.3"><strong>Receiver</strong> — получает 20% торговой прибыли за свою роль в сделке. В физических магазинах эту роль выполняет Store Receiver.</p>
         <p data-i18n-html="pricing.shares.4"><strong>Moderator</strong> — в сумме получает 20%: Sender Curator — 5%, Receiver Curator — 5%, Order Supervisor — 10%. Это части одной общей доли Moderator, а не дополнительные проценты сверх неё.</p>
@@ -133,33 +136,36 @@
 
       <section id="calculator" aria-labelledby="calculator-title">
         <h2 id="calculator-title" data-i18n="pricing.calc.title">Проверьте расчёт самостоятельно</h2>
-        <p data-i18n="pricing.calc.intro">Измените суммы и выберите способ продажи. Калькулятор сразу покажет структуру цены и распределение торговой прибыли. Это учебный пример, не предложение о продаже товара.</p>
+        <p data-i18n="pricing.calc.intro">Выберите, как оформлена покупка, и измените расходы и налоги. При онлайн-заказе, даже обработанном магазином как Warehouse Receiver, SSC = 0. При покупке непосредственно в торговом зале применяется введённая сумма SSC. Калькулятор показывает общую торговую прибыль участников и её распределение. Это учебный расчёт, а не реальный заказ.</p>
         <div class="pricing-calculator" id="pricing-calculator">
           <fieldset class="pricing-routes">
-            <legend data-i18n="pricing.calc.routeLegend">Способ продажи</legend>
-            <label><input type="radio" name="pricing-route" value="delivery"><span data-i18n="pricing.calc.routeDelivery">Доставка через Receiver</span></label>
-            <label><input type="radio" name="pricing-route" value="store" checked><span data-i18n="pricing.calc.routeStore">Продажа через Store Receiver</span></label>
+            <legend data-i18n="pricing.calc.routeLegend">Как оформлена покупка</legend>
+            <label><input type="radio" name="pricing-route" value="delivery"><span data-i18n="pricing.calc.routeDelivery">Онлайн-заказ, в том числе из магазина (SSC = 0)</span></label>
+            <label><input type="radio" name="pricing-route" value="store" checked><span data-i18n="pricing.calc.routeStore">Покупка непосредственно в торговом зале (SSC применяется)</span></label>
           </fieldset>
           <div class="pricing-inputs">
             <div class="pricing-field"><label for="pricing-product" data-i18n="pricing.calc.product">Первоначальная цена товара (€)</label><input type="number" id="pricing-product" min="0" max="1000000" step="0.01" inputmode="decimal" value="50"></div>
             <div class="pricing-field"><label for="pricing-shipping" data-i18n="pricing.calc.shipping">Доставка (€)</label><input type="number" id="pricing-shipping" min="0" max="1000000" step="0.01" inputmode="decimal" value="5"></div>
             <div class="pricing-field"><label for="pricing-other" data-i18n="pricing.calc.other">Другие обоснованные расходы (€)</label><input type="number" id="pricing-other" min="0" max="1000000" step="0.01" inputmode="decimal" value="0"></div>
-            <div class="pricing-field" id="pricing-ssc-field"><label for="pricing-ssc" data-i18n="pricing.calc.ssc">Store Selling Cost (€)</label><input type="number" id="pricing-ssc" min="0" max="1000000" step="0.01" inputmode="decimal" value="8"></div>
-            <div class="pricing-field"><label for="pricing-tax" data-i18n="pricing.calc.tax">Налоговая ставка для примера (%)</label><input type="number" id="pricing-tax" min="0" max="100" step="0.01" inputmode="decimal" value="0"></div>
+            <div class="pricing-field" id="pricing-ssc-field"><label for="pricing-ssc" data-i18n="pricing.calc.ssc">SSC при покупке непосредственно в магазине (€)</label><input type="number" id="pricing-ssc" min="0" max="1000000" step="0.01" inputmode="decimal" value="8"></div>
+            <div class="pricing-field"><label for="pricing-duty" data-i18n="pricing.calc.otherTax">Другие налоги и обязательные сборы (€)</label><input type="number" id="pricing-duty" min="0" max="1000000" step="0.01" inputmode="decimal" value="0"></div>
+            <div class="pricing-field"><label for="pricing-tax" data-i18n="pricing.calc.tax">Ставка НДС для примера (%)</label><input type="number" id="pricing-tax" min="0" max="100" step="0.01" inputmode="decimal" value="20"></div>
           </div>
-          <p class="pricing-note" data-i18n="pricing.calc.taxHelp">Введите ставку вручную. Калькулятор применяет её к сумме расходов и торговой прибыли. Реальные налоговые ставки, база и правила расчёта зависят от конкретной продажи.</p>
-          <p class="pricing-error" id="pricing-error" role="status" aria-live="polite" data-i18n="pricing.calc.invalid" hidden>Проверьте поля: вводите суммы от 0 до 1 000 000 евро, не более двух знаков после запятой; налоговую ставку — от 0% до 100%.</p>
+          <p class="pricing-note" data-i18n="pricing.calc.taxHelp">Введите ставку НДС вручную. В этом примере другие введённые налоги и сборы считаются частью базы НДС. НДС начисляется на цену без НДС, уже включающую прибыль; прибыль — 30% расходов, включая НДС. Реальные ставки, вычеты и правила зависят от страны и товара.</p>
+          <p class="pricing-error" id="pricing-error" role="status" aria-live="polite" data-i18n="pricing.calc.invalid" hidden>Проверьте поля: суммы должны быть от 0 до 1 000 000 евро, не более двух знаков после запятой; ставка НДС — от 0% до 100%.</p>
           <h3 data-i18n="pricing.calc.breakdown">Из чего складывается цена</h3>
-          <table class="profit-example pricing-results">
-            <tbody>
-              <tr><th scope="row" data-i18n="pricing.calc.costTotal">Всего расходов без налогов</th><td data-calc="cost">—</td></tr>
-              <tr><th scope="row" data-i18n="pricing.calc.profit">Торговая прибыль — 30% расходов</th><td data-calc="profit">—</td></tr>
-              <tr><th scope="row" data-i18n="pricing.calc.beforeTax">Цена до налогов</th><td data-calc="beforeTax">—</td></tr>
-              <tr><th scope="row" data-i18n="pricing.calc.taxAmount">Налог (по введённой ставке)</th><td data-calc="tax">—</td></tr>
-            </tbody>
-            <tfoot><tr><th scope="row" data-i18n="pricing.calc.final">Конечная цена покупателя</th><td data-calc="final" aria-live="polite" aria-atomic="true">—</td></tr></tfoot>
-          </table>
-          <h3 data-i18n="pricing.calc.distribution">Кому достаётся торговая прибыль</h3>
+          <table class="profit-example pricing-results"><tbody>
+            <tr><th scope="row" data-i18n="pricing.calc.costProduct">Первоначальная цена товара</th><td data-calc="product">—</td></tr>
+            <tr><th scope="row" data-i18n="pricing.calc.costShipping">Доставка</th><td data-calc="shipping">—</td></tr>
+            <tr><th scope="row" data-i18n="pricing.calc.costOther">Другие расходы</th><td data-calc="other">—</td></tr>
+            <tr id="pricing-ssc-row"><th scope="row" data-i18n="pricing.calc.costSsc">Store Selling Cost (SSC; онлайн = €0)</th><td data-calc="ssc">—</td></tr>
+            <tr><th scope="row" data-i18n="pricing.calc.costTotal">Все расходы до налогов</th><td data-calc="cost">—</td></tr>
+            <tr><th scope="row" data-i18n="pricing.calc.otherTaxAmount">Другие налоги и сборы</th><td data-calc="duty">—</td></tr>
+            <tr><th scope="row" data-i18n="pricing.calc.taxAmount">НДС с продажи (по введённой ставке)</th><td data-calc="vat">—</td></tr>
+            <tr><th scope="row" data-i18n="pricing.calc.allExpenses">Все расходы, включая налоги</th><td data-calc="allExpenses">—</td></tr>
+            <tr><th scope="row" data-i18n="pricing.calc.profit">Общая торговая прибыль участников — 30% расходов с налогами</th><td data-calc="profit">—</td></tr>
+          </tbody><tfoot><tr><th scope="row" data-i18n="pricing.calc.final">Конечная цена покупателя</th><td data-calc="final" aria-live="polite" aria-atomic="true">—</td></tr></tfoot></table>
+          <h3 data-i18n="pricing.calc.distribution">Распределение общей торговой прибыли всех участников</h3>
           <table class="profit-example pricing-results"><tbody>
             <tr><th scope="row" data-i18n="pricing.calc.source">Источник товара — 20%</th><td data-calc="source">—</td></tr>
             <tr><th scope="row" id="pricing-receiver-label" data-i18n="pricing.calc.receiverStore">Store Receiver — 20%</th><td data-calc="receiver">—</td></tr>
@@ -169,7 +175,7 @@
             <tr><th scope="row" data-i18n="pricing.calc.platform">Omnia-Mundi — 20%</th><td data-calc="platform">—</td></tr>
             <tr><th scope="row" data-i18n="pricing.calc.fund">Protection Fund — 20%</th><td data-calc="fund">—</td></tr>
           </tbody><tfoot><tr><th scope="row" data-i18n="pricing.calc.total">Сумма распределённых долей — 100%</th><td data-calc="distributed">—</td></tr></tfoot></table>
-          <p class="pricing-note" data-i18n="pricing.calc.rounding">Все значения округляются до евроцентов. При распределении долей последние центы назначаются так, чтобы сумма выплат точно равнялась рассчитанной торговой прибыли.</p>
+          <p class="pricing-note" data-i18n="pricing.calc.rounding">Суммы округляются до евроцентов. Прибыль равна 30% расходов с налогами, включая округлённый НДС; доли распределяются до цента, чтобы сумма выплат точно равнялась прибыли.</p>
           <button type="button" id="pricing-reset" class="pricing-reset" data-i18n="pricing.calc.reset">Вернуть исходные значения</button>
         </div>
       </section>
