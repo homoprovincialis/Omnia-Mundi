@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Модель логистики Omnia-Mundi: перевозчики, объединение грузов, доставка, физические магазины и возвраты." data-i18n-content="logistics.description">
+  <title data-i18n="logistics.title">Логистика и возвраты — Omnia-Mundi</title>
+  <!-- Refresh local CSS and JS on every navigation; no cookies or manual cache clearing. -->
+  <script>
+    (() => {
+      const version = Date.now().toString(36);
+      const css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = 'style.css?v=' + version;
+      document.head.append(css);
+      const scripts = ["site-data.js","locales/ru.js","locales/en.js","i18n.js","navigation.js"];
+      for (const src of scripts) {
+        const script = document.createElement('script');
+        script.src = src + '?v=' + version;
+        script.async = false;
+        document.head.append(script);
+      }
+    })();
+  </script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#content" data-i18n="how.a1">К содержанию</a>
+  <div class="page">
+    <header class="header">
+      <a href="index.html" class="logo-link" aria-label="Omnia-Mundi — на главную" data-i18n-aria-label="how.arialabel1"><img src="assets/omnia-mundi-logo.svg" width="160" alt="OMNIA-MUNDI"></a>
+      <a class="search catalog-search-link" href="index.html#catalog"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span data-i18n="how.span1">Поиск товаров в каталоге</span></a>
+      <div class="header-tools">
+      <div class="account-actions">
+        <button type="button" data-future><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3.5"/><path d="M4 21v-3a8 8 0 0 1 16 0v3"/></svg><span data-i18n="how.span2">Войти</span></button>
+        <button type="button" data-future><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 3h3l3 12h11l3-9H6"/><circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/></svg><span data-i18n="how.span3">Корзина</span></button>
+      </div>
+        <nav class="language-switcher" aria-label="Язык сайта" data-i18n-aria-label="common.language"><button type="button" data-language="ru" aria-pressed="true">RU</button><span aria-hidden="true">|</span><button type="button" data-language="en" aria-pressed="false">EN</button></nav>
+      </div>
+    </header>
+    <nav class="primary-nav" aria-label="Основная навигация" data-i18n-aria-label="how.arialabel2">
+      <a href="index.html#catalog" data-i18n="how.a2">Каталог</a>
+      <button type="button" data-future data-i18n="how.button1">Производители</button>
+      <button type="button" data-future data-i18n="how.button2">Бесплатные товары</button>
+      <button type="button" data-future data-i18n="how.button3">Запросы</button>
+      <button type="button" class="request-link" data-future data-i18n="how.button4">+ Найти отсутствующий товар</button>
+    </nav>
+    <main id="content" class="how-it-works logistics-page" aria-labelledby="page-title">
+      <nav class="back-links" aria-label="Возврат" data-i18n-aria-label="how.arialabel3"><a href="index.html" data-i18n="logistics.back">Главная</a><span aria-hidden="true"> / </span><span aria-current="page" data-i18n="logistics.heading">Логистика и возвраты</span></nav>
+      <h1 id="page-title" data-i18n="logistics.heading">Логистика и возвраты</h1>
+        <p data-i18n="logistics.lead">Международная логистика на основе конкуренции независимых транспортных компаний.</p>
+        <p class="development-status" data-i18n="logistics.status">Omnia-Mundi находится в разработке. Описанные услуги доставки и возвратов — планируемая модель, а не действующий сервис.</p>
+      <nav class="contents" aria-label="Содержание страницы" data-i18n-aria-label="logistics.nav">
+        <a href="#model" data-i18n="logistics.model.title">Наша логистическая модель</a>
+        <a href="#partners" data-i18n="logistics.partners.title">Сотрудничество с транспортными компаниями</a>
+        <a href="#consolidation" data-i18n="logistics.consolidation.title">Объединение грузов</a>
+        <a href="#delivery" data-i18n="logistics.delivery.title">Как будет проходить доставка</a>
+        <a href="#stores" data-i18n="logistics.stores.title">Логистика физических магазинов</a>
+        <a href="#returns" data-i18n="logistics.returns.title">Возвраты товаров</a>
+        <a href="#benefits" data-i18n="logistics.benefits.title">Преимущества для участников</a>
+      </nav>
+      <section id="model" aria-labelledby="model-title">
+        <h2 id="model-title" data-i18n="logistics.model.title">Наша логистическая модель</h2>
+        <p data-i18n="logistics.model.0">Omnia-Mundi объединит производителей, продавцов, Receiver, магазины и покупателей. Доставку будут выполнять независимые транспортные компании по договорам с платформой — собственный транспортный парк создавать не планируется.</p>
+        <p data-i18n="logistics.model.1">Наша цель — доступная и надёжная логистика благодаря конкуренции перевозчиков, совместным отправкам и выбору подходящих маршрутов.</p>
+      </section>
+      <section id="partners" aria-labelledby="partners-title">
+        <h2 id="partners-title" data-i18n="logistics.partners.title">Сотрудничество с транспортными компаниями</h2>
+        <p data-i18n="logistics.partners.0">Перевозчики заключают договоры с Omnia-Mundi и входят в список логистических партнёров. Они сообщают маршруты, тарифы, сроки, виды транспорта, вместимость и условия ответственности.</p>
+        <p data-i18n="logistics.partners.1">Для конкретного заказа сравниваются полная стоимость, сроки, надёжность, сохранность грузов и доступная вместимость. Компании с лучшими предложениями смогут получать больше заказов, однако объём заказов не гарантируется.</p>
+        <p data-i18n="logistics.partners.2">На одном направлении смогут конкурировать несколько перевозчиков. Это сохранит выбор и уменьшит зависимость от одного партнёра.</p>
+      </section>
+      <section id="consolidation" aria-labelledby="consolidation-title">
+        <h2 id="consolidation-title" data-i18n="logistics.consolidation.title">Объединение грузов</h2>
+        <p data-i18n="logistics.consolidation.0">Крупная партия обычно обходится дешевле в пересчёте на товар. Поэтому грузы разных производителей, следующие в одном направлении, смогут объединяться в одну отправку.</p>
+        <p data-i18n="logistics.consolidation.1">Например, вместо десяти отдельных отправок возможна одна совместная перевозка с последующим распределением товаров по Receiver и магазинам. Транспортные и дополнительные расходы рассчитываются заранее и распределяются по согласованной методике с учётом веса, объёма и особенностей груза.</p>
+        <p data-i18n="logistics.consolidation.2">Объединение применяется, когда экономия оправдывает расходы на сборку, хранение и распределение груза и не создаёт неприемлемых задержек.</p>
+      </section>
+      <section id="delivery" aria-labelledby="delivery-title">
+        <h2 id="delivery-title" data-i18n="logistics.delivery.title">Как будет проходить доставка</h2>
+        <ol class="purchase-steps">
+          <li data-i18n="logistics.delivery.0">Manufacturer, Procurer или Seller подготавливает товар к отправке.</li>
+          <li data-i18n="logistics.delivery.1">Omnia-Mundi сравнивает подходящие предложения перевозчиков и варианты объединения грузов.</li>
+          <li data-i18n="logistics.delivery.2">Покупатель видит и подтверждает полную цену, включая доставку, до оплаты.</li>
+          <li data-i18n="logistics.delivery.3">Перевозчик доставляет товар напрямую покупателю либо через Receiver, склад или магазин — без ненужных промежуточных этапов.</li>
+          <li data-i18n="logistics.delivery.4">Передача и получение фиксируются для отслеживания заказа и завершения сделки.</li>
+        </ol>
+      </section>
+      <section id="stores" aria-labelledby="stores-title">
+        <h2 id="stores-title" data-i18n="logistics.stores.title">Логистика физических магазинов</h2>
+        <p data-i18n="logistics.stores.0">Независимые Omnia-Mundi Stores смогут принимать объединённые партии разных производителей и использовать регулярные маршруты снабжения. Это поможет снижать расходы на единицу товара и расширять ассортимент.</p>
+        <p data-i18n="logistics.stores.1">Магазины также смогут выдавать онлайн-заказы по согласованным условиям; если прямая доставка выгоднее, дополнительная перевозка через магазин не требуется.</p>
+      </section>
+      <section id="returns" aria-labelledby="returns-title">
+        <h2 id="returns-title" data-i18n="logistics.returns.title">Возвраты товаров</h2>
+        <p data-i18n="logistics.returns.0">Покупатель сможет запросить возврат и получить понятные инструкции: куда передать товар, как организуется обратная перевозка и кто оплачивает её в соответствующем случае.</p>
+        <p data-i18n="logistics.returns.1">Для потребительских дистанционных покупок в ЕС обычно предусмотрено право отказаться от договора в течение 14 дней после получения товара; есть законные исключения. Дефекты, повреждения и потеря груза рассматриваются отдельно по применимому законодательству и договору.</p>
+        <p data-i18n="logistics.returns.2">Возврат может выполняться через перевозчика или Receiver. Условия возврата денег, сроки и распределение расходов должны соответствовать правам покупателя.</p>
+      </section>
+      <section id="benefits" aria-labelledby="benefits-title">
+        <h2 id="benefits-title" data-i18n="logistics.benefits.title">Преимущества для участников</h2>
+        <p data-i18n="logistics.benefits.0">Производители и продавцы получают доступ к совместным международным перевозкам. Независимые транспортные компании — новых клиентов, более полную загрузку транспорта и возможность перевозить грузы в обратном направлении.</p>
+        <p data-i18n="logistics.benefits.1">Receiver и магазины получают выбор перевозчиков и более удобное снабжение. Покупатели — прозрачные расходы на доставку и понятные условия получения и возврата товаров.</p>
+      </section>
+      <p class="back-to-catalog"><a href="index.html#catalog" data-i18n="how.a8">Вернуться в каталог</a></p>
+    </main>
+<footer><nav id="footer-nav" aria-label="Дополнительные разделы" data-i18n-aria-label="how.arialabel7"></nav></footer>
+  </div>
+  <dialog aria-labelledby="notice-title" id="notice"><p id="notice-title"></p><form method="dialog"><button id="notice-close"></button></form></dialog>
+</body>
+</html>
