@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Финансовый учёт Omnia-Mundi: комбинированная торговая модель, налоги, платежи, выплаты и прозрачные расчёты." data-i18n-content="ledger.description">
+  <title data-i18n="ledger.title">Финансовый учёт — Omnia-Mundi</title>
+  <!-- Refresh local CSS and JS on every navigation; no cookies or manual cache clearing. -->
+  <script>
+    (() => {
+      const version = Date.now().toString(36);
+      const css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = 'style.css?v=' + version;
+      document.head.append(css);
+      const scripts = ["site-data.js","locales/ru.js","locales/en.js","i18n.js","navigation.js"];
+      for (const src of scripts) {
+        const script = document.createElement('script');
+        script.src = src + '?v=' + version;
+        script.async = false;
+        document.head.append(script);
+      }
+    })();
+  </script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#content" data-i18n="how.a1">К содержанию</a>
+  <div class="page">
+    <header class="header">
+      <a href="index.html" class="logo-link" aria-label="Omnia-Mundi — на главную" data-i18n-aria-label="how.arialabel1"><img src="assets/omnia-mundi-logo.svg" width="160" alt="OMNIA-MUNDI"></a>
+      <a class="search catalog-search-link" href="index.html#catalog"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span data-i18n="how.span1">Поиск товаров в каталоге</span></a>
+      <div class="header-tools">
+      <div class="account-actions">
+        <button type="button" data-future><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3.5"/><path d="M4 21v-3a8 8 0 0 1 16 0v3"/></svg><span data-i18n="how.span2">Войти</span></button>
+        <button type="button" data-future><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 3h3l3 12h11l3-9H6"/><circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/></svg><span data-i18n="how.span3">Корзина</span></button>
+      </div>
+        <nav class="language-switcher" aria-label="Язык сайта" data-i18n-aria-label="common.language"><button type="button" data-language="ru" aria-pressed="true">RU</button><span aria-hidden="true">|</span><button type="button" data-language="en" aria-pressed="false">EN</button></nav>
+      </div>
+    </header>
+    <nav class="primary-nav" aria-label="Основная навигация" data-i18n-aria-label="how.arialabel2">
+      <a href="index.html#catalog" data-i18n="how.a2">Каталог</a>
+      <button type="button" data-future data-i18n="how.button1">Производители</button>
+      <button type="button" data-future data-i18n="how.button2">Бесплатные товары</button>
+      <button type="button" data-future data-i18n="how.button3">Запросы</button>
+      <button type="button" class="request-link" data-future data-i18n="how.button4">+ Найти отсутствующий товар</button>
+    </nav>
+    <main id="content" class="how-it-works ledger-page" aria-labelledby="page-title">
+      <nav class="back-links" aria-label="Возврат" data-i18n-aria-label="how.arialabel3"><a href="index.html" data-i18n="ledger.back">Главная</a><span aria-hidden="true"> / </span><span aria-current="page" data-i18n="ledger.heading">Финансовый учёт</span></nav>
+      <h1 id="page-title" data-i18n="ledger.heading">Финансовый учёт</h1>
+        <p data-i18n="ledger.lead">Прозрачные платежи, законная торговля, налоги и справедливое распределение прибыли.</p>
+        <p class="development-status" data-i18n="ledger.status">Omnia-Mundi находится в разработке. Описанные финансовые сервисы, выплаты и способы оплаты пока не запущены; компания планируется к регистрации на Кипре.</p>
+      <nav class="contents" aria-label="Разделы финансового учёта" data-i18n-aria-label="ledger.nav">
+        <a href="#model" data-i18n="ledger.model.title">Две модели торговли</a>
+        <a href="#approval" data-i18n="ledger.approval.title">Проверка товаров до продажи</a>
+        <a href="#payments" data-i18n="ledger.payments.title">Как покупатели оплачивают товары</a>
+        <a href="#pricing" data-i18n="ledger.pricing.title">Цена товара и торговая прибыль</a>
+        <a href="#shares" data-i18n="ledger.shares.title">Распределение торговой прибыли</a>
+        <a href="#payouts" data-i18n="ledger.payouts.title">Выплаты и международные переводы</a>
+        <a href="#deposits" data-i18n="ledger.deposits.title">Возвратные депозиты Receiver</a>
+        <a href="#fund" data-i18n="ledger.fund.title">Protection Fund</a>
+        <a href="#returns" data-i18n="ledger.returns.title">Возвраты, отмены и споры</a>
+        <a href="#taxes" data-i18n="ledger.taxes.title">Налоги и бухгалтерский учёт</a>
+        <a href="#security" data-i18n="ledger.security.title">Финансовая безопасность и контроль</a>
+      </nav>
+      <section id="model" aria-labelledby="model-title">
+        <h2 id="model-title" data-i18n="ledger.model.title">Две модели торговли</h2>
+        <p data-i18n="ledger.model.1">Для компаний и зарегистрированных профессиональных продавцов Omnia-Mundi выступает оператором маркетплейса. Независимый продавец заключает договор купли-продажи с покупателем и отвечает за товар. Omnia-Mundi организует работу платформы, проверку предложений, логистику и расчёты, учитывая собственный доход отдельно от средств продавцов.</p>
+        <p data-i18n="ledger.model.2">Для сделок с частными Procurer и Seller Omnia-Mundi выступает юридическим продавцом перед покупателем. Частные участники добровольно принимают задания или передают товары на реализацию и получают согласованное вознаграждение; они не становятся автоматически наёмными работниками. Право собственности на товар, закупка, передача и расчёты определяются договором.</p>
+        <p data-i18n="ledger.model.3">Частному исполнителю не обязательно учреждать компанию, но регулярная деятельность может требовать регистрации и уплаты налогов в его стране. Юридический продавец каждой покупки указывается до оплаты.</p>
+
+      </section>
+      <section id="approval" aria-labelledby="approval-title">
+        <h2 id="approval-title" data-i18n="ledger.approval.title">Проверка товаров до продажи</h2>
+        <p data-i18n="ledger.approval.1">Товары не публикуются автоматически. Запрос или предложение проверяет Moderator: описание, происхождение, документы, цена, безопасность и законность. Затем Administrator проводит дополнительную проверку и даёт окончательное разрешение. При необходимости проверяются отдельные партии и поставщики.</p>
+        <p data-i18n="ledger.approval.2">Многоступенчатый контроль снижает риски, но не отменяет обязательной ответственности продавца и требований к безопасности продукции.</p>
+
+      </section>
+      <section id="payments" aria-labelledby="payments-title">
+        <h2 id="payments-title" data-i18n="ledger.payments.title">Как покупатели оплачивают товары</h2>
+        <p data-i18n="ledger.payments.1">Планируется приём Visa, Mastercard, PayPal, Apple Pay, Google Pay, банковских переводов SEPA и оплаты банковскими картами через POS-терминалы физических магазинов. Доступность каждого метода зависит от договора с банком или платёжным провайдером.</p>
+        <p data-i18n="ledger.payments.2">Покупатель видит конечную цену и юридического продавца до подтверждения заказа. Лицензированный платёжный провайдер обрабатывает платёж, а система записывает его связь с заказом, расходы, обязательства и будущие выплаты. Полные номера карт и защитные коды не хранятся на серверах Omnia-Mundi.</p>
+        <p data-i18n="ledger.payments.3">Для распределения платежей между независимыми получателями потребуется одобренный провайдер маркетплейсов; внутренняя запись баланса не является банковским счётом участника.</p>
+
+      </section>
+      <section id="pricing" aria-labelledby="pricing-title">
+        <h2 id="pricing-title" data-i18n="ledger.pricing.title">Цена товара и торговая прибыль</h2>
+        <p data-i18n="ledger.pricing.1">Утверждённое правило цены: все расходы по сделке, включая применимые налоги, плюс 30% торговой прибыли от суммы расходов. Учитываются цена товара, доставка, таможенные платежи, платёжные комиссии и другие обоснованные затраты.</p>
+        <p data-i18n="ledger.pricing.2">При продаже непосредственно в физическом магазине дополнительно учитывается Store Selling Cost (SSC), покрывающий расходы магазина. В обычных онлайн-заказах SSC отсутствует, в том числе при самовывозе из магазина. НДС рассчитывается по налоговым правилам без двойного начисления.</p>
+
+      </section>
+      <section id="shares" aria-labelledby="shares-title">
+        <h2 id="shares-title" data-i18n="ledger.shares.title">Распределение торговой прибыли</h2>
+        <p data-i18n="ledger.shares.1">Торговая прибыль после окончательного завершения сделки распределяется по утверждённой схеме: 20% одному источнику товара (Procurer, Manufacturer или Seller), 20% Receiver, 20% Moderators, 20% Omnia-Mundi и 20% Protection Fund.</p>
+        <p data-i18n="ledger.shares.2">Доля Moderators составляет вместе 20% прибыли: Sender Curator — 5%, Receiver Curator — 5%, Order Supervisor — 10%. Возмещение расходов и возвратные депозиты не являются торговой прибылью.</p>
+        <table class="profit-example">
+          <caption data-i18n="ledger.shareTableCaption">Распределение торговой прибыли</caption>
+          <thead><tr><th scope="col" data-i18n="ledger.shareRecipient">Получатель</th><th scope="col" data-i18n="ledger.shareAmount">Доля прибыли</th></tr></thead>
+          <tbody><tr><th scope="row" data-i18n="ledger.share.source">Источник товара</th><td>20%</td></tr>
+<tr><th scope="row" data-i18n="ledger.share.receiver">Receiver</th><td>20%</td></tr>
+<tr><th scope="row" data-i18n="ledger.share.moderators">Moderators</th><td>20%</td></tr>
+<tr><th scope="row" data-i18n="ledger.share.company">Omnia-Mundi</th><td>20%</td></tr>
+<tr><th scope="row" data-i18n="ledger.share.fund">Protection Fund</th><td>20%</td></tr></tbody>
+          <tfoot><tr><th scope="row" data-i18n="ledger.shareTotal">Всего</th><td>100%</td></tr></tfoot>
+        </table>
+      </section>
+      <section id="payouts" aria-labelledby="payouts-title">
+        <h2 id="payouts-title" data-i18n="ledger.payouts.title">Выплаты и международные переводы</h2>
+        <p data-i18n="ledger.payouts.1">У каждого участника будет личный финансовый раздел: подтверждённые расходы, начисления, суммы в ожидании, доступные выплаты, комиссии и история переводов. Базовая валюта первого этапа — евро.</p>
+        <p data-i18n="ledger.payouts.2">Procurer получает предусмотренное раннее возмещение документированных расходов на закупку и первую доставку после выполнения своей части и подтверждения платежа покупателя. Manufacturer и Seller получают согласованную стоимость товара и предусмотренные компенсации по правилам сделки. Доли торговой прибыли выплачиваются после окончательного закрытия; условия консигнации устанавливаются отдельно.</p>
+        <p data-i18n="ledger.payouts.3">Переводы выполняются через поддерживаемые банками и провайдерами каналы: SEPA и, где возможно, другие международные способы. Страна получателя, идентификация, банковские реквизиты, валютный курс, комиссии и санкционные ограничения проверяются до выплаты.</p>
+
+      </section>
+      <section id="deposits" aria-labelledby="deposits-title">
+        <h2 id="deposits-title" data-i18n="ledger.deposits.title">Возвратные депозиты Receiver</h2>
+        <p data-i18n="ledger.deposits.1">В стандартной цепочке депозит Receiver обеспечивает согласованные обязательства по первоначальной стоимости товара и первой доставке. Это возвратное обеспечение, а не прибыль или доход платформы. Возврат либо обоснованное удержание отражается отдельно по правилам сделки.</p>
+        <p data-i18n="ledger.deposits.2">Условия консигнации для физических магазинов могут отличаться; хранение и обработка обеспечительных средств требуют подходящего законного платёжного механизма.</p>
+
+      </section>
+      <section id="fund" aria-labelledby="fund-title">
+        <h2 id="fund-title" data-i18n="ledger.fund.title">Protection Fund</h2>
+        <p data-i18n="ledger.fund.1">Protection Fund получает 20% распределяемой торговой прибыли. Фонд учитывается отдельно от операционного дохода компании; каждое поступление и расходование подтверждается документами и разрешёнными процедурами.</p>
+        <p data-i18n="ledger.fund.2">Юридический статус, отдельные счета или механизмы хранения средств фонда будут определены до запуска с учётом действующего законодательства.</p>
+
+      </section>
+      <section id="returns" aria-labelledby="returns-title">
+        <h2 id="returns-title" data-i18n="ledger.returns.title">Возвраты, отмены и споры</h2>
+        <p data-i18n="ledger.returns.1">Система учитывает отмены заказов, возвраты денег, частичные возвраты, chargeback, компенсации и корректировки. Когда продавец — Omnia-Mundi, компания исполняет обязанности продавца; когда продавец — независимое предприятие, оно отвечает по договору купли-продажи, а платформа помогает организовать процедуру.</p>
+        <p data-i18n="ledger.returns.2">Для дистанционных потребительских продаж в ЕС обычно предусмотрено 14 дней на отказ после получения товара, с законными исключениями. Права по неисправным товарам действуют отдельно. Выплаты участникам учитывают обязательства по возвратам и фактическое завершение сделки.</p>
+
+      </section>
+      <section id="taxes" aria-labelledby="taxes-title">
+        <h2 id="taxes-title" data-i18n="ledger.taxes.title">Налоги и бухгалтерский учёт</h2>
+        <p data-i18n="ledger.taxes.1">Компания планируется к регистрации в Республике Кипр. Она будет официально вести бухгалтерию, подавать отчётность и платить применимые налоги. На 2026 год стандартная ставка корпоративного налога Кипра — 15% налогооблагаемой прибыли, а стандартная ставка НДС — 19%; конкретные операции могут облагаться иначе.</p>
+        <p data-i18n="ledger.taxes.2">В модели оператора собственные доходы Omnia-Mundi отделяются от продаж независимых продавцов. В модели собственного продавца компания учитывает продажи, себестоимость и соответствующие обязательства по применимым правилам. Налоговые обязанности могут возникать и за пределами Кипра.</p>
+        <p data-i18n="ledger.taxes.3">Бухгалтерия использует двойную запись, подтверждающие документы, счета и квитанции, сверку с банками и платёжными провайдерами, контроль НДС и таможенных платежей, обязательную отчётность, аудит при необходимости и сведения о продавцах по DAC7, когда закон применим.</p>
+
+      </section>
+      <section id="security" aria-labelledby="security-title">
+        <h2 id="security-title" data-i18n="ledger.security.title">Финансовая безопасность и контроль</h2>
+        <p data-i18n="ledger.security.1">Каждый заказ и платёж получают уникальные идентификаторы. Записи о денежных движениях нельзя незаметно переписать: исправления проводятся отдельными корректирующими операциями. Права доступа разделены, а значимые переводы требуют установленной авторизации.</p>
+        <p data-i18n="ledger.security.2">Система предусматривает проверку участников, противодействие мошенничеству, защиту персональных данных и регулярную сверку. AI может помогать проверять расчёты и выявлять ошибки, но не распоряжается деньгами самостоятельно.</p>
+
+      </section>
+        <p data-i18n="ledger.ending">Каждый платёж, расход, налог и доход участника должен иметь понятное происхождение и документальное подтверждение.</p>
+      <p class="back-to-catalog"><a href="index.html#catalog" data-i18n="how.a8">Вернуться в каталог</a></p>
+    </main>
+    <footer><nav id="footer-nav" aria-label="Дополнительные разделы" data-i18n-aria-label="how.arialabel7"></nav></footer>
+  </div>
+  <dialog aria-labelledby="notice-title" id="notice"><p id="notice-title"></p><form method="dialog"><button id="notice-close"></button></form></dialog>
+</body>
+</html>
