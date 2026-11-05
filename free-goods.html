@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Free Goods Omnia-Mundi: прямые пожертвования товарами, благотворительные купоны, прозрачная международная помощь." data-i18n-content="free.description">
+  <title data-i18n="free.title">Бесплатные товары и благотворительность — Omnia-Mundi</title>
+  <!-- Refresh local CSS and JS on every navigation; no cookies or manual cache clearing. -->
+  <script>
+    (() => {
+      const version = Date.now().toString(36);
+      const css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = 'style.css?v=' + version;
+      document.head.append(css);
+      const scripts = ["site-data.js","locales/ru.js","locales/en.js","i18n.js","navigation.js"];
+      for (const src of scripts) {
+        const script = document.createElement('script');
+        script.src = src + '?v=' + version;
+        script.async = false;
+        document.head.append(script);
+      }
+    })();
+  </script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#content" data-i18n="how.a1">К содержанию</a>
+  <div class="page">
+    <header class="header">
+      <a href="index.html" class="logo-link" aria-label="Omnia-Mundi — на главную" data-i18n-aria-label="how.arialabel1"><img src="assets/omnia-mundi-logo.svg" width="160" alt="OMNIA-MUNDI"></a>
+      <a class="search catalog-search-link" href="index.html#catalog"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span data-i18n="how.span1">Поиск товаров в каталоге</span></a>
+      <div class="header-tools">
+      <div class="account-actions">
+        <button type="button" data-future><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3.5"/><path d="M4 21v-3a8 8 0 0 1 16 0v3"/></svg><span data-i18n="how.span2">Войти</span></button>
+        <button type="button" data-future><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 3h3l3 12h11l3-9H6"/><circle cx="9" cy="20" r="1"/><circle cx="19" cy="20" r="1"/></svg><span data-i18n="how.span3">Корзина</span></button>
+      </div>
+        <nav class="language-switcher" aria-label="Язык сайта" data-i18n-aria-label="common.language"><button type="button" data-language="ru" aria-pressed="true">RU</button><span aria-hidden="true">|</span><button type="button" data-language="en" aria-pressed="false">EN</button></nav>
+      </div>
+    </header>
+    <nav class="primary-nav" aria-label="Основная навигация" data-i18n-aria-label="how.arialabel2">
+      <a href="index.html#catalog" data-i18n="how.a2">Каталог</a>
+      <button type="button" data-future data-i18n="how.button1">Производители</button>
+      <button type="button" data-future data-i18n="how.button2">Бесплатные товары</button>
+      <button type="button" data-future data-i18n="how.button3">Запросы</button>
+      <button type="button" class="request-link" data-future data-i18n="how.button4">+ Найти отсутствующий товар</button>
+    </nav>
+    <main id="content" class="how-it-works free-goods-page" aria-labelledby="page-title">
+      <nav class="back-links" aria-label="Возврат" data-i18n-aria-label="how.arialabel3"><a href="index.html" data-i18n="free.back">Главная</a><span aria-hidden="true"> / </span><span aria-current="page" data-i18n="free.heading">Бесплатные товары и благотворительность</span></nav>
+      <h1 id="page-title" data-i18n="free.heading">Бесплатные товары и благотворительность</h1>
+        <p data-i18n="free.lead">Международная платформа бескорыстной помощи, бесплатных товаров и специальных купонов.</p>
+      <p class="development-status" data-i18n="free.status">Omnia-Mundi находится в разработке. Раздача товаров, купоны и благотворительные платежи пока не запущены.</p>
+      <nav class="contents" aria-label="Разделы Free Goods" data-i18n-aria-label="free.nav">
+        <a href="#mission" data-i18n="free.mission.title">Благотворительность без извлечения прибыли</a>
+        <a href="#offers" data-i18n="free.offers.title">Как люди смогут передавать бесплатные товары</a>
+        <a href="#coupons" data-i18n="free.coupons.title">Специальные купоны для нуждающихся</a>
+        <a href="#worldwide" data-i18n="free.worldwide.title">Международная благотворительность напрямую</a>
+        <a href="#omnia" data-i18n="free.omnia.title">Товары, которые Omnia-Mundi решит передать бесплатно</a>
+        <a href="#transparency" data-i18n="free.transparency.title">Прозрачность без раскрытия частной жизни</a>
+        <a href="#verification" data-i18n="free.verification.title">Безопасность и противодействие мошенничеству</a>
+        <a href="#impact" data-i18n="free.impact.title">Социальная цель Free Goods</a>
+      </nav>
+      <section id="mission" aria-labelledby="mission-title">
+        <h2 id="mission-title" data-i18n="free.mission.title">Благотворительность без извлечения прибыли</h2>
+        <p data-i18n="free.mission.1">Free Goods — благотворительное направление Omnia-Mundi. Люди из разных стран смогут добровольно помогать друг другу товарами и необходимыми вещами непосредственно через платформу, без обязательного участия благотворительных организаций.</p>
+        <p data-i18n="free.mission.2">Главный принцип — бескорыстная помощь. Бесплатная передача товаров не создаёт торговой прибыли, посреднической комиссии и обычного распределения прибыли маркетплейса 20/20/20/20/20.</p>
+        <p data-i18n="free.mission.3">Платформа будет помогать проверять предложения, находить получателей, согласовывать передачу и вести прозрачный учёт. Участие дарителей и помощников добровольно.</p>
+      </section>
+      <section id="offers" aria-labelledby="offers-title">
+        <h2 id="offers-title" data-i18n="free.offers.title">Как люди смогут передавать бесплатные товары</h2>
+        <p data-i18n="free.offers.1">Человек или предприятие сможет предложить пригодный товар бесплатно, указав его состояние, описание, фотографии, местонахождение и способ передачи. Moderator проверяет предложение, Administrator одобряет публикацию.</p>
+        <p data-i18n="free.offers.2">Получатель отправляет заявку и согласует передачу лично, через Receiver, магазин Omnia-Mundi или транспортного партнёра, если такой способ доступен.</p>
+        <p data-i18n="free.offers.3">Никто не получает торговую прибыль за сам факт дарения. Если возникают реальные затраты на транспортировку или обработку, они раскрываются заранее и могут добровольно покрываться дарителем или другим благотворителем. Скрытые сборы недопустимы.</p>
+      </section>
+      <section id="coupons" aria-labelledby="coupons-title">
+        <h2 id="coupons-title" data-i18n="free.coupons.title">Специальные купоны для нуждающихся</h2>
+        <p data-i18n="free.coupons.1">Люди смогут подавать заявки на необходимые товары. После проверки потребности и наличия ресурсов Omnia-Mundi сможет выдавать специальные бесплатные купоны на определённые категории товаров, например питание, одежду и школьные принадлежности.</p>
+        <p data-i18n="free.coupons.2">У каждого купона будут уникальный номер, назначение, условия использования, срок действия и разрешённый лимит. Система фиксирует выдачу и погашение и предотвращает дублирование или перепродажу купонов.</p>
+        <p data-i18n="free.coupons.3">Купон не является свободно обмениваемыми деньгами. Помощь предоставляется только при наличии соответствующих товаров или добровольного финансирования; выдача не гарантируется автоматически.</p>
+      </section>
+      <section id="worldwide" aria-labelledby="worldwide-title">
+        <h2 id="worldwide-title" data-i18n="free.worldwide.title">Международная благотворительность напрямую</h2>
+        <p data-i18n="free.worldwide.1">Даритель сможет поддержать конкретный проверенный запрос, предложить товар или добровольно оплатить необходимую доставку. Получателю не потребуется обращаться в стороннюю благотворительную организацию только для связи с дарителем.</p>
+        <p data-i18n="free.worldwide.2">Если используется денежное пожертвование, оно обрабатывается через разрешённого платёжного провайдера и учитывается отдельно от коммерческой выручки. Назначение средств и реальные комиссии обработки должны быть известны дарителю до оплаты.</p>
+        <p data-i18n="free.worldwide.3">Возможность помощи зависит от доступных товаров, транспортировки, местного законодательства и проверки участников. Платформа стремится работать по всему миру, но не обещает доступность каждой операции в каждой стране.</p>
+      </section>
+      <section id="omnia" aria-labelledby="omnia-title">
+        <h2 id="omnia-title" data-i18n="free.omnia.title">Товары, которые Omnia-Mundi решит передать бесплатно</h2>
+        <p data-i18n="free.omnia.1">Omnia-Mundi сможет по собственному решению включать в Free Goods отдельные пригодные товары, которые компания не может целесообразно реализовать. Вместо ненужного хранения или утилизации они смогут принести пользу людям.</p>
+        <p data-i18n="free.omnia.2">Каждое решение принимается отдельно после проверки законного права распоряжения товаром, его состояния, безопасности и возможности передачи. Размещение не является автоматическим и не гарантируется.</p>
+        <p data-i18n="free.omnia.3">Только специально одобренные Omnia-Mundi товары становятся бесплатными предложениями. Компания не обязуется передавать бесплатно все товары, которые по каким-либо причинам не были проданы.</p>
+      </section>
+      <section id="transparency" aria-labelledby="transparency-title">
+        <h2 id="transparency-title" data-i18n="free.transparency.title">Прозрачность без раскрытия частной жизни</h2>
+        <p data-i18n="free.transparency.1">Каждая передача получит собственный номер и историю: от предложения и проверки до согласования доставки и подтверждения получения. Фактические расходы фиксируются отдельно от пожертвованных товаров.</p>
+        <p data-i18n="free.transparency.2">Публичные отчёты смогут показывать количество переданных товаров, направления помощи и подтверждённые расходы. Личные сведения и обстоятельства получателей не публикуются без надлежащего основания и согласия, когда оно требуется.</p>
+        <p data-i18n="free.transparency.3">Omnia-Mundi не будет взимать скрытые благотворительные комиссии или превращать помощь в источник торговой прибыли.</p>
+      </section>
+      <section id="verification" aria-labelledby="verification-title">
+        <h2 id="verification-title" data-i18n="free.verification.title">Безопасность и противодействие мошенничеству</h2>
+        <p data-i18n="free.verification.1">Moderator проверяет заявки и предложения, Administrator подтверждает допуск. Для купонов предусматриваются контроль повторных заявок, проверка права на получение и защита от неправомерного использования.</p>
+        <p data-i18n="free.verification.2">Бесплатные товары должны быть пригодными и безопасными. Для продуктов питания, детских товаров и других чувствительных категорий действуют соответствующие требования хранения, состояния, сроков и законодательства.</p>
+        <p data-i18n="free.verification.3">Получатели помощи должны сохранять достоинство и право на конфиденциальность. Проверяются только сведения, необходимые для справедливого распределения доступных ресурсов.</p>
+      </section>
+      <section id="impact" aria-labelledby="impact-title">
+        <h2 id="impact-title" data-i18n="free.impact.title">Социальная цель Free Goods</h2>
+        <p data-i18n="free.impact.1">Free Goods открывает возможность прямой бескорыстной помощи между людьми и предприятиями разных стран. Человек может передать вещь, помочь с доставкой или поддержать конкретную потребность без заработка на благотворительности.</p>
+        <p data-i18n="free.impact.2">Мы стремимся уменьшать бессмысленную потерю пригодных ресурсов, расширять взаимопомощь и создавать международную систему солидарности, в которой реальная помощь достигает людей прозрачно.</p>
+      </section>
+        <p data-i18n="free.ending">Наш принцип — люди помогают людям напрямую, добровольно, прозрачно и без торговой прибыли от благотворительности.</p>
+      <p class="back-to-catalog"><a href="index.html#catalog" data-i18n="how.a8">Вернуться в каталог</a></p>
+    </main>
+    <footer><nav id="footer-nav" aria-label="Дополнительные разделы" data-i18n-aria-label="how.arialabel7"></nav></footer>
+  </div>
+  <dialog aria-labelledby="notice-title" id="notice"><p id="notice-title"></p><form method="dialog"><button id="notice-close"></button></form></dialog>
+</body>
+</html>
