@@ -38,6 +38,10 @@ window.OMNIA_DATA = Object.freeze({
       "href": "business-connections.html"
     },
     {
+      "id": "free",
+      "href": "free-goods.html"
+    },
+    {
       "id": "investors",
       "href": "investors-and-partners.html"
     },
