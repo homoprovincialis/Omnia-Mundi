@@ -31,7 +31,8 @@ window.OMNIA_DATA = Object.freeze({
       "href": "manufacturer-supply-network.html"
     },
     {
-      "id": "academy"
+      "id": "academy",
+      "href": "omnia-mundi-academy.html"
     },
     {
       "id": "business",
