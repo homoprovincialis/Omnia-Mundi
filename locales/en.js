@@ -1036,12 +1036,12 @@ window.OMNIA_MESSAGES.en = {
   "info.cookies.title": "Cookies & Storage — Omnia-Mundi",
   "info.cookies.heading": "Cookies & Storage",
   "info.cookies.status": "Site under development. The information below describes the current site and plans, not an operating trading service.",
-  "info.cookies.h0": "Purpose",
+  "info.cookies.h0": "What is used now",
   "info.cookies.p0": "To remember the RU/EN language selection, the site uses browser local storage when available. This is not an advertising profile.",
-  "info.cookies.h1": "How trade works",
+  "info.cookies.h1": "Cookies and third-party services",
   "info.cookies.p1": "The demonstration catalogue does not require advertising cookies in its own code. Hosting and external sites you visit may have their own technical mechanisms and policies.",
-  "info.cookies.h2": "Transparent economics",
+  "info.cookies.h2": "How to manage storage",
   "info.cookies.p2": "You can clear site data in your browser settings. After clearing it, the language may reset; the ?lang=ru or ?lang=en URL parameter allows direct selection.",
-  "info.cookies.h3": "Current status",
+  "info.cookies.h3": "Before launch",
   "info.cookies.p3": "If analytics, authentication or additional storage technologies are added later, this page must be updated and required notices and consent mechanisms implemented."
 };
