@@ -63,28 +63,32 @@ window.OMNIA_DATA = Object.freeze({
       "href": "financial-ledger.html"
     },
     {
-      "id": "about"
+      "id": "about",
+      "href": "about.html"
     },
     {
-      "id": "contact"
+      "id": "contact",
+      "href": "contact.html"
     },
     {
-      "id": "help"
+      "id": "help",
+      "href": "help.html"
     },
     {
-      "id": "rules"
+      "id": "rules",
+      "href": "rules.html"
     },
     {
-      "id": "privacy"
+      "id": "privacy",
+      "href": "privacy.html"
     },
     {
-      "id": "terms"
+      "id": "terms",
+      "href": "terms.html"
     },
     {
-      "id": "returns"
-    },
-    {
-      "id": "cookies"
+      "id": "cookies",
+      "href": "cookies.html"
     }
   ],
   "products": [
